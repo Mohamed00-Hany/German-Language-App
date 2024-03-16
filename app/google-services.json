@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "476709081587",
+    "project_id": "german-language-app",
+    "storage_bucket": "german-language-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476709081587:android:7a985ba062c52fb7768286",
+        "android_client_info": {
+          "package_name": "com.projects.germanlanguageapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw3plJBXzoMnfn_4kI0WAbWHZlF5xmkQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

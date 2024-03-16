@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.Translation_page.Translation_page_Fragment"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/green_cicle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/greencicle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title_3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Translation"
+            android:textColor="@color/greeen1"
+            android:textSize="29sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="38dp"
+            android:layout_marginStart="16dp" />
+
+        <LinearLayout
+            android:id="@+id/L1"
+            app:layout_constraintTop_toBottomOf="@id/green_cicle3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/arabic_word"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11sp"
+                android:layout_marginTop="15sp"
+                android:text="@string/Arabic"
+                android:textColor="@color/black"
+                android:textSize="29sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edittext_1"
+                android:padding="10dp"
+                android:layout_width="300sp"
+                android:layout_height="90sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/r1"
+                android:textColor="@color/greeen1"
+                android:textStyle="bold" />
+
+            <ImageButton
+
+                android:id="@+id/exchange_button"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="22dp"
+                android:background="@drawable/exchage" />
+
+            <TextView
+                android:id="@+id/german_word"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:text="@string/Germany"
+                android:textColor="@color/black"
+                android:textSize="29sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edittext_2"
+                android:padding="10dp"
+                android:layout_width="300sp"
+                android:layout_height="90sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/r1"
+                android:textColor="@color/greeen1"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/translate_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_button_background"
+                android:paddingHorizontal="47dp"
+                android:paddingVertical="12dp"
+                android:textSize="23dp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:text="@string/Translate"
+                android:backgroundTint="@color/greeen" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/Questions_page"
+
+    >
+
+    <fragment
+        android:id="@+id/Questions_page"
+        android:name="com.projects.germanlanguageapp.ui.main.Questions_page_Fragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_quistions"
+
+        />
+
+    <fragment
+        android:id="@+id/Words_page"
+        android:name="com.projects.germanlanguageapp.ui.main.Words_page_Fragment"
+        android:label="@string/title_Listening"
+        tools:layout="@layout/fragment_words" />
+
+    <fragment
+        android:id="@+id/Translation_page"
+        android:name="com.projects.germanlanguageapp.ui.main.Translation_page_Fragment"
+        android:label="@string/title_Translation"
+        tools:layout="@layout/fragment_translation" />
+</navigation>

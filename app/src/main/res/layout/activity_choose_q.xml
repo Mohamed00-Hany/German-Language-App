@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/green_cicle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/greencicle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/thinker"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:src="@drawable/thinker"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/green_cicle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/thinker"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingHorizontal="20dp"
+            android:orientation="vertical"
+            android:id="@+id/linear1"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/question_text"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Questin\nquestion "
+                android:textColor="@color/greeen1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/op1_Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="option1"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_button_background"
+                android:backgroundTint="@color/lead"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+
+                />
+
+            <Button
+                android:id="@+id/op2_Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="option2"
+                android:textSize="18sp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/rounded_button_background"
+                android:backgroundTint="@color/lead"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+
+                />
+
+            <Button
+                android:id="@+id/op3_Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="option3"
+                android:textSize="18sp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/rounded_button_background"
+                android:backgroundTint="@color/lead"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+
+                />
+
+            <Button
+                android:id="@+id/op4_Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="option4"
+                android:textSize="18sp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/rounded_button_background"
+                android:backgroundTint="@color/lead"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+
+                />
+
+            <Button
+                android:layout_marginTop="30dp"
+                android:id="@+id/nextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_button_background"
+                android:backgroundTint="@color/greeen1"
+                android:textAllCaps="false"
+                android:text="@string/Next"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:padding="16dp"
+
+
+                />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
