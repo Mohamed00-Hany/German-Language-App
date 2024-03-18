@@ -15,14 +15,14 @@
 
         <Button
             android:id="@+id/level_button"
-            android:layout_width="350dp"
-            android:layout_height="65dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@{title}"
             android:textColor="@color/white"
-            android:textSize="26sp"
+            android:textSize="24sp"
             android:textAllCaps="false"
             android:background="@drawable/lesson_rounded" />
 
