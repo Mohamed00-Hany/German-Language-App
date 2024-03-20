@@ -12,8 +12,7 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         tools:context=".ui.Questions_page.Questions_page_Fragment"
-
-        >
+        android:layout_marginBottom="90dp">
 
         <ImageView
             android:id="@+id/green_cicle"
@@ -21,9 +20,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/greencicle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/W1"
@@ -40,65 +37,65 @@
 
         <Button
             android:id="@+id/choose_button"
-            android:layout_width="153dp"
-            android:layout_height="138dp"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="224dp"
+            android:layout_width="190dp"
+            android:layout_height="180dp"
+            android:maxLines="1"
             android:background="@drawable/rounded_button_background"
             android:backgroundTint="@color/greeen"
             android:text="@string/Choose"
             android:textAllCaps="false"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-            />
+            app:layout_constraintTop_toBottomOf="@id/W1"
+            app:layout_constraintEnd_toStartOf="@id/rearrange_button"
+            app:layout_constraintBottom_toTopOf="@id/match_button"
+            android:layout_marginTop="40dp"/>
 
         <Button
             android:id="@+id/rearrange_button"
-            android:layout_width="153dp"
-            android:layout_height="138dp"
-            android:layout_marginTop="224dp"
-            android:layout_marginEnd="21dp"
+            android:layout_width="190dp"
+            android:layout_height="180dp"
+            android:maxLines="1"
             android:background="@drawable/rounded_button_background"
             android:backgroundTint="@color/greeen2"
             android:text="@string/Rearrange"
             android:textAllCaps="false"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-            />
+            app:layout_constraintTop_toBottomOf="@id/W1"
+            app:layout_constraintStart_toEndOf="@id/choose_button"
+            app:layout_constraintBottom_toTopOf="@id/complete_button"
+            android:layout_marginTop="40dp"/>
 
         <Button
             android:id="@+id/match_button"
-            android:layout_width="153dp"
-            android:layout_height="138dp"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="375dp"
+            android:layout_width="190dp"
+            android:layout_height="180dp"
+            android:maxLines="1"
             android:background="@drawable/rounded_button_background"
             android:backgroundTint="@color/greeen2"
             android:text="@string/Match"
             android:textAllCaps="false"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-            />
+            app:layout_constraintTop_toBottomOf="@id/choose_button"
+            app:layout_constraintEnd_toStartOf="@id/complete_button"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <Button
             android:id="@+id/complete_button"
-            android:layout_width="153dp"
-            android:layout_height="138dp"
-            android:layout_marginTop="375dp"
-            android:layout_marginEnd="21dp"
+            android:layout_width="190dp"
+            android:layout_height="180dp"
+            android:maxLines="1"
             android:background="@drawable/rounded_button_background"
             android:backgroundTint="@color/greeen"
             android:text="@string/Complete"
             android:textAllCaps="false"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/rearrange_button"
+            app:layout_constraintStart_toEndOf="@id/match_button"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
