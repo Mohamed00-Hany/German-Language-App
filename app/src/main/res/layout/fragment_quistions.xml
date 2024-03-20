@@ -35,7 +35,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/choose_button"
             android:layout_width="0dp"
             android:layout_height="170dp"
@@ -51,9 +51,11 @@
             app:layout_constraintBottom_toTopOf="@id/match_button"
             android:layout_marginTop="50dp"
             android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"/>
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/white"
+            />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/rearrange_button"
             android:layout_width="0dp"
             android:layout_height="170dp"
@@ -67,9 +69,11 @@
             app:layout_constraintStart_toEndOf="@id/choose_button"
             app:layout_constraintBottom_toTopOf="@id/complete_button"
             android:layout_marginTop="50dp"
-            android:layout_marginEnd="12dp"/>
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/white"
+            />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/match_button"
             android:layout_width="0dp"
             android:layout_height="170dp"
@@ -84,9 +88,11 @@
             app:layout_constraintEnd_toStartOf="@id/complete_button"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"/>
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/white"
+            />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/complete_button"
             android:layout_width="0dp"
             android:layout_height="170dp"
@@ -100,7 +106,9 @@
             app:layout_constraintTop_toBottomOf="@id/rearrange_button"
             app:layout_constraintStart_toEndOf="@id/match_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginEnd="12dp"/>
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/white"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

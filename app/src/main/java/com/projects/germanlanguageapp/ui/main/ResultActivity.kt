@@ -40,8 +40,8 @@ class ResultActivity : AppCompatActivity() {
             if (sourceClass == "choose_Q") {
                 val intent = Intent(this, choose_Q::class.java)
                 startActivity(intent)
-            } else if (sourceClass == "rearrangequestions") {
-                val intent = Intent(this, rearrangequestions::class.java)
+            } else if (sourceClass == "Rearrangequestions") {
+                val intent = Intent(this, Rearrangequestions::class.java)
                 startActivity(intent)
             } else if (sourceClass == "MatchActivity") {
                 val intent = Intent(this, MatchActivity::class.java)
@@ -51,6 +51,14 @@ class ResultActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("destinationFragment", R.id.Questions_page)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
+        finish()
     }
 
 }

@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import androidx.core.content.ContextCompat
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.ActivityChooseQBinding
@@ -88,6 +89,7 @@ class choose_Q : AppCompatActivity() {
         val questionNumber = currentQuestionsIndex + 1
         val questionText = "$questionNumber: ${questions[currentQuestionsIndex]}"
         binding.questionText.text = questionText
+        binding.questionText.movementMethod = ScrollingMovementMethod.getInstance()
         binding.op1Button.text = options[currentQuestionsIndex][0]
         binding.op2Button.text = options[currentQuestionsIndex][1]
         binding.op3Button.text = options[currentQuestionsIndex][2]

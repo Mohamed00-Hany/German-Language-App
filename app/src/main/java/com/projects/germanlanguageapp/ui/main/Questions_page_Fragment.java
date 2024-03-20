@@ -22,6 +22,7 @@ public class Questions_page_Fragment extends Fragment {
     private Button complete_button;
 
 
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         Questions_page_ViewModel homeViewModel =
@@ -44,7 +45,7 @@ public class Questions_page_Fragment extends Fragment {
         rearrange_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), rearrangequestions.class);
+                Intent intent = new Intent(getActivity(), Rearrangequestions.class);
                 startActivity(intent);
             }
         });

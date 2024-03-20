@@ -52,7 +52,7 @@
             android:name=".ui.main.MatchActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.rearrangequestions"
+            android:name=".ui.main.Rearrangequestions"
             android:exported="false" />
         <activity
             android:name=".ui.main.ResultActivity"
