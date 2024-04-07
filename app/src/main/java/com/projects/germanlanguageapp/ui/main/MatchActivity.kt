@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
 import com.projects.germanlanguageapp.R
@@ -52,9 +53,14 @@ class MatchActivity : AppCompatActivity() {
             val currentOptions = options[currentQuestionsIndex]
             resetButtonColors()
             binding.statement1TextView.text = "1: ${currentQuestion[0]}"
+            binding.statement1TextView.movementMethod= ScrollingMovementMethod.getInstance()
             binding.statement2TextView.text = "2: ${currentQuestion[1]}"
+            binding.statement2TextView.movementMethod= ScrollingMovementMethod.getInstance()
             binding.statement3TextView.text = "3: ${currentQuestion[2]}"
+            binding.statement3TextView.movementMethod= ScrollingMovementMethod.getInstance()
             binding.statement4TextView.text = "4: ${currentQuestion[3]}"
+            binding.statement4TextView.movementMethod= ScrollingMovementMethod.getInstance()
+
 
             val adapter = ArrayAdapter(this, R.layout.custom_spinner_item, currentOptions)
 
@@ -104,7 +110,11 @@ class MatchActivity : AppCompatActivity() {
             binding.statement3TextView.setTextColor(if (correctMatchesForQuestion[2] == selectedIndices[2]) Color.GREEN else Color.RED)
             binding.statement4TextView.setTextColor(if (correctMatchesForQuestion[3] == selectedIndices[3]) Color.GREEN else Color.RED)
         }
-        binding.SubmitButton.isEnabled=false
+        binding.statement1Spinner.isEnabled = false
+        binding.statement2Spinner.isEnabled = false
+        binding.statement3Spinner.isEnabled = false
+        binding.statement4Spinner.isEnabled = false
+        binding.SubmitButton.isEnabled = false
     }
 
 
@@ -112,7 +122,11 @@ class MatchActivity : AppCompatActivity() {
         if (currentQuestionsIndex < questions.size - 1) {
             currentQuestionsIndex++
             displayQuestion()
-            binding.SubmitButton.isEnabled=true
+            binding.statement1Spinner.isEnabled = true
+            binding.statement2Spinner.isEnabled = true
+            binding.statement3Spinner.isEnabled = true
+            binding.statement4Spinner.isEnabled = true
+            binding.SubmitButton.isEnabled = true
         }
         if (currentQuestionsIndex == questions.size - 1) {
             binding.nextButton.text = getString(R.string.Show_Result)

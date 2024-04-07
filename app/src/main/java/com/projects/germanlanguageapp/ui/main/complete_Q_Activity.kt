@@ -13,7 +13,7 @@ class complete_Q_Activity : AppCompatActivity() {
     private val questions = arrayOf(
         "- Hallo!.....bin Simon.....heißt du?\n"+
                 "- Ich.....Rolf.\n"+"- Und.....kommst.....?\n"+
-                "- Aus Osterreich?\n"+"- Nein, ich.....aus Deutschland.\n",
+                "- Aus Osterreich?\n"+"- Nein, ich.....aus Deutschland.",
         "-Hallo! Ich bin Thomas,.....Wer.....du?\n- .....heiße Philipp.\n- Und woher.....du?\n"+
                 "- Ich komme.....der Schweiz.\n" )
 

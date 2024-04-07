@@ -37,11 +37,18 @@
 
         <LinearLayout
             android:id="@+id/L1"
-            app:layout_constraintTop_toBottomOf="@id/green_cicle3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="20dp">
+            android:paddingBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/green_cicle3"
+            app:layout_constraintVertical_bias="0"
+            android:layout_marginTop="15dp"
+            >
 
             <TextView
                 android:id="@+id/arabic_word"
@@ -56,12 +63,12 @@
 
             <EditText
                 android:id="@+id/edittext_1"
-                android:padding="10dp"
                 android:layout_width="300sp"
                 android:layout_height="90sp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/r1"
+                android:padding="10dp"
                 android:textColor="@color/greeen1"
                 android:textStyle="bold" />
 
@@ -86,12 +93,12 @@
 
             <EditText
                 android:id="@+id/edittext_2"
-                android:padding="10dp"
                 android:layout_width="300sp"
                 android:layout_height="90sp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/r1"
+                android:padding="10dp"
                 android:textColor="@color/greeen1"
                 android:textStyle="bold" />
 
@@ -99,16 +106,15 @@
                 android:id="@+id/translate_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="50dp"
                 android:background="@drawable/rounded_button_background"
                 android:paddingHorizontal="47dp"
                 android:paddingVertical="12dp"
-                android:textSize="23dp"
-                android:textStyle="bold"
-                android:textAllCaps="false"
                 android:text="@string/Translate"
-                android:backgroundTint="@color/greeen" />
+                android:textAllCaps="false"
+                android:textSize="23dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,13 @@
 package com.projects.germanlanguageapp.ui.main
-
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.ActivityRearrangequestionsBinding
 
-class rearrangequestions : AppCompatActivity() {
+class Rearrangequestions : AppCompatActivity() {
     private lateinit var binding: ActivityRearrangequestionsBinding
     private val questions =arrayOf("alt /bist /Wie /du/?","du /her /? /Wo /kommst",
         "dein /Lieblingsessen /? /ist /Was", "Hobbys /? /deine /sind /Was", "verheiratet /? /du /Bist")
@@ -35,6 +35,7 @@ class rearrangequestions : AppCompatActivity() {
         val questionNumber = currentQuestionsIndex + 1
         val questionText = "$questionNumber: ${questions[currentQuestionsIndex]}"
         binding.rearrangeQuestionText.text= questionText
+        binding.rearrangeQuestionText.movementMethod = ScrollingMovementMethod.getInstance()
         binding.answerText.text.clear()
         binding.answerResult.text = ""
     }
@@ -52,6 +53,7 @@ class rearrangequestions : AppCompatActivity() {
             binding.answerResult.text=wrongAnswer
         }
         binding.SubmitButton.isEnabled=false
+        binding.answerText.isEnabled=false
     }
 
     private fun nextQuestion() {
@@ -59,13 +61,14 @@ class rearrangequestions : AppCompatActivity() {
             currentQuestionsIndex++
             binding.rearrangeQuestionText.postDelayed({ displayQuestion() }, 100)
             binding.SubmitButton.isEnabled=true
+            binding.answerText.isEnabled=true
 
         }
         if(currentQuestionsIndex ==questions.size-1){
             binding.nextButton.text=getString(R.string.Show_Result)
             binding.nextButton.setOnClickListener {
                 val intent = Intent(this, ResultActivity::class.java)
-                intent.putExtra("SOURCE_CLASS", "rearrangequestions")
+                intent.putExtra("SOURCE_CLASS", "Rearrangequestions")
                 intent.putExtra("SCORE", score)
                 intent.putExtra("NoOfQuestions", questions.size)
                 startActivity(intent)
