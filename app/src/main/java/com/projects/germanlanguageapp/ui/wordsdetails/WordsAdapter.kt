@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.projects.germanlanguageapp.databinding.WordItemBinding
 import com.projects.germanlanguageapp.domain.models.WordsResponse
-import com.projects.germanlanguageapp.ui.lessons.LessonsAdapter
 
 class WordsAdapter(private var wordsList:List<WordsResponse>?):RecyclerView.Adapter<WordsAdapter.ViewHolder>() {
 
@@ -16,25 +15,28 @@ class WordsAdapter(private var wordsList:List<WordsResponse>?):RecyclerView.Adap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val word=wordsList?.get(position)
-        holder.bind(word,position,onMicrophoneClickListener)
+        holder.bind(word,position,onFeatureClickListener)
     }
 
     override fun getItemCount(): Int = wordsList?.size ?: 0
 
-    lateinit var onMicrophoneClickListener: WordsAdapter.OnMicrophoneClick
+    lateinit var onFeatureClickListener: OnFeatureClick
 
-    interface OnMicrophoneClick{
-        fun onClick(position:Int,word: String?)
+    interface OnFeatureClick{
+        fun onClick(position:Int,word: String?,featureNumber: Int)
     }
 
     class ViewHolder(private val itemBinding: WordItemBinding) :RecyclerView.ViewHolder(itemBinding.root) {
-        fun bind(word: WordsResponse?, position: Int, onMicrophoneClickListener: WordsAdapter.OnMicrophoneClick)
+        fun bind(word: WordsResponse?, position: Int, onFeatureClickListener: OnFeatureClick)
         {
             itemBinding.word=word?.word
             itemBinding.translation=word?.wordTranslation
             itemBinding.invalidateAll()
             itemBinding.microphone.setOnClickListener{
-                onMicrophoneClickListener.onClick(position,word?.word)
+                onFeatureClickListener.onClick(position,word?.word,1)
+            }
+            itemBinding.mic.setOnClickListener{
+                onFeatureClickListener.onClick(position,word?.word,2)
             }
         }
     }

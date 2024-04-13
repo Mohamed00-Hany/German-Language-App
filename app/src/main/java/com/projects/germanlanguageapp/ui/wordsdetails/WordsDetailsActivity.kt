@@ -1,8 +1,7 @@
 package com.projects.germanlanguageapp.ui.wordsdetails
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -10,9 +9,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.ActivityWordsDetailsBinding
+import com.projects.germanlanguageapp.ui.recording.RecordingActivity
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.util.*
+
 
 class WordsDetailsActivity: AppCompatActivity() {
 
@@ -34,11 +34,17 @@ class WordsDetailsActivity: AppCompatActivity() {
                 wordsAdapter.changeData(it)
             }
         }
-        wordsAdapter.onMicrophoneClickListener=object : WordsAdapter.OnMicrophoneClick {
-            override fun onClick(position: Int, word: String?) {
-                viewModel.speak(word)
+        wordsAdapter.onFeatureClickListener=object : WordsAdapter.OnFeatureClick {
+            override fun onClick(position: Int, word: String?,featureNumber: Int) {
+                if (featureNumber == 1) {
+                    viewModel.speak(word)
+                }
+                else {
+                    val intent = Intent(this@WordsDetailsActivity, RecordingActivity::class.java)
+                    intent.putExtra("TARGET_WORD",word)
+                    startActivity(intent)
+                }
             }
         }
     }
-
 }

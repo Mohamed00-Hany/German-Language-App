@@ -1,6 +1,7 @@
 package com.projects.germanlanguageapp.ui.studentoradmin
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -41,14 +42,23 @@ class StudentOrAdminActivity:AppCompatActivity() {
                 when(it)
                 {
                     User.STUDENT -> {
+                        saveUserType(false)
                         navigateToLoginOrRegisterScreen()
                     }
                     User.ADMIN -> {
+                        saveUserType(true)
                         navigateToLoginScreen()
                     }
                 }
             }
         }
+    }
+
+    private fun saveUserType(isAdmin:Boolean) {
+        val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+        val myEdit = prefs.edit()
+        myEdit.putBoolean("isAdmin", isAdmin)
+        myEdit.apply()
     }
 
     private fun navigateToLoginOrRegisterScreen()

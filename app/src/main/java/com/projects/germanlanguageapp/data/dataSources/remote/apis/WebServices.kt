@@ -1,8 +1,8 @@
 package com.projects.germanlanguageapp.data.dataSources.remote.apis
 
 import com.projects.germanlanguageapp.domain.models.LevelsResponse
-import retrofit2.http.GET
-import retrofit2.http.Query
+import com.projects.germanlanguageapp.domain.models.ModelAiResponse
+import retrofit2.http.*
 
 interface WebServices {
     @GET("levels")

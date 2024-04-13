@@ -3,7 +3,9 @@ package com.projects.germanlanguageapp.ui.login
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -12,9 +14,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.ActivityLoginBinding
+import com.projects.germanlanguageapp.ui.GlobalState
 import com.projects.germanlanguageapp.ui.OnDialogClickListener
 import com.projects.germanlanguageapp.ui.levels.LevelsActivity
-import com.projects.germanlanguageapp.ui.GlobalState
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
@@ -29,6 +31,12 @@ class LoginActivity : AppCompatActivity() {
         binding= DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.lifecycleOwner=this
         binding.vm=viewModel
+        val prefs = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+        val isAdmin = prefs.getBoolean("isAdmin", false)
+        if (isAdmin) {
+            viewModel.email.value = "admin@education.o6u"
+            binding.emailLayout.isEnabled = false
+        }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 observeLoginState()
@@ -45,7 +53,8 @@ class LoginActivity : AppCompatActivity() {
                     }
                     is GlobalState.Success -> {
                         hideLoading()
-                        navigateToLevelsScreen()
+                        saveUser()
+                        navigateToNextScreen()
                     }
                     is GlobalState.Failed -> {
                         hideLoading()
@@ -56,9 +65,23 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToLevelsScreen() {
-        startActivity(Intent(this, LevelsActivity::class.java))
-        finishAffinity()
+    private fun saveUser() {
+        val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+        val myEdit = prefs.edit()
+        myEdit.putBoolean("isUserLoggedIn", true)
+        myEdit.apply()
+    }
+
+    private fun navigateToNextScreen() {
+        val prefs = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+        val isAdmin = prefs.getBoolean("isAdmin", false)
+        if (isAdmin) {
+            startActivity(Intent(this, LevelsActivity::class.java))
+            finishAffinity()
+        } else {
+            startActivity(Intent(this, LevelsActivity::class.java))
+            finishAffinity()
+        }
     }
 
     private fun showLoading(message: String?) {

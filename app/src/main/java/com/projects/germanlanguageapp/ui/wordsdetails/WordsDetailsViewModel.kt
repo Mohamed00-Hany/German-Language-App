@@ -21,7 +21,7 @@ class WordsDetailsViewModel : ViewModel() {
         WordsResponse(word = "Ja", wordTranslation = "نعم")
     ))
 
-    var textToSpeech: TextToSpeech? = null
+    private var textToSpeech: TextToSpeech? = null
 
     fun onMicrophoneClicked(context: Context?) {
 

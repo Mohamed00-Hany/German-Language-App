@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class LoginViewModel : ViewModel() {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    val email = MutableStateFlow<String?>(null)
+    var email = MutableStateFlow<String?>(null)
     val password = MutableStateFlow<String?>(null)
     val emailError = MutableStateFlow<String?>(null)
     val passwordError = MutableStateFlow<String?>(null)

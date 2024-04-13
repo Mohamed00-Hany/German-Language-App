@@ -100,7 +100,8 @@
                 android:background="@drawable/r1"
                 android:padding="10dp"
                 android:textColor="@color/greeen1"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:enabled="false"/>
 
             <Button
                 android:id="@+id/translate_button"
