@@ -81,6 +81,31 @@
         <activity
             android:name=".ui.wordsdetails.WordsDetailsActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".ui.admin.lessons.LessonsAdminActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.admin.levels.AdminLevel"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.admin.QuestionsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.admin.Questions.QuestionsRecyclerViewActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.admin.WordsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.admin.QuestionsOrWordsActivity"
+            android:exported="false"
             android:screenOrientation="portrait" />
     </application>
 

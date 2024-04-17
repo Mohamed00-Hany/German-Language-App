@@ -125,6 +125,12 @@ public class Translation_page_Fragment extends Fragment {
             }
         });
     }
+    @Override
+    public void onPause() {
+        super.onPause();
+        edittext_1.setText("");
+        edittext_2.setText("");
+    }
 
     @Override
     public void onDestroyView() {

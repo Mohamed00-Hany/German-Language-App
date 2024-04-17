@@ -23,4 +23,13 @@
     <string name="Restart">Neu starten</string>
     <string name="Submit">Einreichen</string>
     <string name="Note">Hinweis: Wenn es mehr als eine Antwort gibt, trennen Sie diese durch ein „-“.</string>
+    <string name="modify_levels">Sie können es ändern über Ebenen</string>
+    <string name="modify_questions_words">Ändern Sie ungefähr Fragen oder Worte</string>
+    <string name="Questions">Fragen</string>
+    <string name="Words">Wörter</string>
+    <string name="Add_level">Neue Ebene hinzufügen</string>
+    <string name="modify_question">Zu welcher Frage ändern?</string>
+
+
+
 </resources>

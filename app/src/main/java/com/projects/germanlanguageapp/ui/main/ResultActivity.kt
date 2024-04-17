@@ -1,5 +1,4 @@
 package com.projects.germanlanguageapp.ui.main
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -7,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.projects.germanlanguageapp.R
+
 
 class ResultActivity : AppCompatActivity() {
 
@@ -30,35 +30,36 @@ class ResultActivity : AppCompatActivity() {
             emotion.setImageResource(R.drawable.sad)
         }
         resultTextView.text = "Ihr Ergebnis\n $score aus $NoOfQuestions"
+
         finishButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("destinationFragment", R.id.Questions_page)
+            val intent = Intent(this@ResultActivity, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            finish()
         }
 
         restartButton.setOnClickListener {
             if (sourceClass == "choose_Q") {
                 val intent = Intent(this, choose_Q::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
             } else if (sourceClass == "Rearrangequestions") {
                 val intent = Intent(this, Rearrangequestions::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
             } else if (sourceClass == "MatchActivity") {
                 val intent = Intent(this, MatchActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
             } else if (sourceClass == "complete_Q_Activity") {
                 val intent = Intent(this, complete_Q_Activity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
             }
+            finish()
         }
+
     }
-    override fun onBackPressed() {
-        super.onBackPressed()
-        val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("destinationFragment", R.id.Questions_page)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-        startActivity(intent)
-        finish()
-    }
+
 
 }
