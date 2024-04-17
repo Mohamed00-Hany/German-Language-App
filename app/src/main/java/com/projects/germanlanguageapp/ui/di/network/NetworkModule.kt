@@ -27,7 +27,7 @@ class NetworkModule {
     fun provideRetrofit(gsonConverterFactory: GsonConverterFactory,httpClient: OkHttpClient):Retrofit
     {
         return Retrofit.Builder()
-            .baseUrl("https://localhost:7017/")
+            .baseUrl("http://germanapp-001-site1.jtempurl.com/api/")
             .addConverterFactory(gsonConverterFactory)
             .client(httpClient)
             .build()
