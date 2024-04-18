@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class LevelsResponse(
 
-	@field:SerializedName("LevelsResponse")
+	@field:SerializedName("data")
 	val levelsResponse: List<LevelsResponseItem?>? = null
 )
 

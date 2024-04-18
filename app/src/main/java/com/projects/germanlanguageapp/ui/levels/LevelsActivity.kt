@@ -24,9 +24,12 @@ class LevelsActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= DataBindingUtil.setContentView(this, R.layout.activity_levels)
         binding.vm=viewModel
+        viewModel.getLevels()
         levelsAdapter=LevelsAdapter(viewModel.levels.value)
         lifecycleScope.launch {
-            //levelsAdapter.changeData(viewModel.fetchLevels())
+            viewModel.levels.collect {
+                levelsAdapter.changeData(it)
+            }
         }
         levelsRecycler=binding.levelsRecycler
         levelsRecycler.adapter=levelsAdapter

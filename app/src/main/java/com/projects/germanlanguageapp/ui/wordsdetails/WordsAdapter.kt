@@ -29,14 +29,14 @@ class WordsAdapter(private var wordsList:List<WordsResponse>?):RecyclerView.Adap
     class ViewHolder(private val itemBinding: WordItemBinding) :RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(word: WordsResponse?, position: Int, onFeatureClickListener: OnFeatureClick)
         {
-            itemBinding.word=word?.word
-            itemBinding.translation=word?.wordTranslation
+            itemBinding.word=word?.wordInGerman
+            itemBinding.translation=word?.wordTranslationInArabic
             itemBinding.invalidateAll()
             itemBinding.microphone.setOnClickListener{
-                onFeatureClickListener.onClick(position,word?.word,1)
+                onFeatureClickListener.onClick(position,word?.wordInGerman,1)
             }
             itemBinding.mic.setOnClickListener{
-                onFeatureClickListener.onClick(position,word?.word,2)
+                onFeatureClickListener.onClick(position,word?.wordInGerman,2)
             }
         }
     }

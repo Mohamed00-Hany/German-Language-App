@@ -27,8 +27,11 @@ class LessonsActivity:AppCompatActivity() {
         lessonsRecycler.adapter=lessonsAdapter
         lessonsAdapter.onLessonClickListener=object : LessonsAdapter.OnLessonClick {
             override fun onClick(position: Int, lessonName: String?) {
-                val levelName=intent.getIntExtra("levelName",0)
-                startActivity(Intent(this@LessonsActivity,MainActivity::class.java))
+                val levelId=intent.getIntExtra("levelId",0)
+                val intent = Intent(this@LessonsActivity,MainActivity::class.java)
+                intent.putExtra("levelId",levelId)
+                intent.putExtra("lessonId",position)
+                startActivity(intent)
             }
         }
     }

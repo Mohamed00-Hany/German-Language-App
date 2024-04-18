@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/Questions_page"
-        android:name="com.projects.germanlanguageapp.ui.main.Questions_page_Fragment"
+        android:name="com.projects.germanlanguageapp.ui.main.QuestionsFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_quistions"
 
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/Words_page"
-        android:name="com.projects.germanlanguageapp.ui.main.Words_page_Fragment"
+        android:name="com.projects.germanlanguageapp.ui.main.WordsFragment"
         android:label="@string/title_Listening"
         tools:layout="@layout/fragment_words" />
 

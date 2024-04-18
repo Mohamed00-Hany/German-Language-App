@@ -80,6 +80,7 @@
                     android:hint="Email"
                     android:background="@drawable/button_rounded"
                     android:paddingStart="22dp"
+                    android:textColor="@color/black"
                     android:text="@={vm.email}"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -99,6 +100,7 @@
                     android:hint="Passwort"
                     android:background="@drawable/button_rounded"
                     android:paddingStart="22dp"
+                    android:textColor="@color/black"
                     android:text="@={vm.password}"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>

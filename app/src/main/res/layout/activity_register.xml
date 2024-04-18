@@ -68,6 +68,7 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:inputType="textPersonName"
                 android:maxLength="15"
                 android:paddingStart="22dp"
+                android:textColor="@color/black"
                 android:text="@={vm.userName}"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -87,6 +88,7 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:hint="Email"
                 android:background="@drawable/button_rounded"
                 android:paddingStart="22dp"
+                android:textColor="@color/black"
                 android:text="@={vm.email}"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -106,6 +108,7 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:hint="Passwort"
                 android:background="@drawable/button_rounded"
                 android:paddingStart="22dp"
+                android:textColor="@color/black"
                 android:text="@={vm.password}"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -125,6 +128,7 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:hint="Passwort Bestätigung"
                 android:background="@drawable/button_rounded"
                 android:paddingStart="22dp"
+                android:textColor="@color/black"
                 android:text="@={vm.passwordConfirmation}"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>

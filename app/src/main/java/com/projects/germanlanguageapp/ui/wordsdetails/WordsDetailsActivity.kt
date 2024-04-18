@@ -9,27 +9,37 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.ActivityWordsDetailsBinding
+import com.projects.germanlanguageapp.ui.main.MainActivity
 import com.projects.germanlanguageapp.ui.recording.RecordingActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class WordsDetailsActivity: AppCompatActivity() {
 
     val viewModel: WordsDetailsViewModel by viewModels()
     private lateinit var binding: ActivityWordsDetailsBinding
     private lateinit var wordsAdapter: WordsAdapter
     private lateinit var wordsRecycler: RecyclerView
+    private var levelId: Int? = null
+    private var lessonId: Int? = null
+    private var wordsType: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        levelId = intent.getIntExtra("levelId", 0)
+        lessonId = intent.getIntExtra("lessonId", 0)
+        wordsType = intent.getStringExtra("wordsType")
         binding= DataBindingUtil.setContentView(this, R.layout.activity_words_details)
         binding.vm=viewModel
         wordsAdapter= WordsAdapter(null)
         wordsRecycler=binding.wordsRecycler
         wordsRecycler.adapter=wordsAdapter
         viewModel.onMicrophoneClicked(applicationContext)
+
         lifecycleScope.launch {
+            wordsType?.let { viewModel.loadRequiredData(levelId!!, lessonId!!, it) }
             viewModel.wordsList.collectLatest {
                 wordsAdapter.changeData(it)
             }
