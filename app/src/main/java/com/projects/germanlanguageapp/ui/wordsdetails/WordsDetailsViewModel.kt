@@ -56,36 +56,31 @@ class WordsDetailsViewModel @Inject constructor (private val webServices: WebSer
     suspend fun getAdjectives(levelId: Int, lessonId: Int) {
         val wordsList: MutableList<WordsResponse>? = mutableListOf()
         webServices.getAdjectives(levelId,lessonId).data?.forEachIndexed { index,adjectiveItem ->
-            Log.e("hany",index.toString())
-            Log.e("hany",adjectiveItem.toString())
-            wordsList?.add(WordsResponse(adjectiveItem?.adjectiveName,adjectiveItem?.adjectiveTname))
+            wordsList?.add(WordsResponse(adjectiveItem?.adjectiveId,adjectiveItem?.adjectiveName,adjectiveItem?.adjectiveTname))
         }
         this.wordsList.value = wordsList
     }
 
     suspend fun getNouns(levelId: Int, lessonId: Int) {
-        val wordsList: List<WordsResponse>? = listOf()
+        val wordsList: MutableList<WordsResponse>? = mutableListOf()
         webServices.getNouns(levelId,lessonId).data?.forEachIndexed { index,nounItem ->
-            wordsList?.get(index)?.wordInGerman = nounItem?.nounName
-            wordsList?.get(index)?.wordTranslationInArabic = nounItem?.nounTname
+            wordsList?.add(WordsResponse(nounItem?.nounId,nounItem?.nounName,nounItem?.nounTname))
         }
         this.wordsList.value = wordsList
     }
 
     suspend fun getVerbs(levelId: Int, lessonId: Int) {
-        val wordsList: List<WordsResponse>? = listOf()
+        val wordsList: MutableList<WordsResponse>? = mutableListOf()
         webServices.getVerbs(levelId,lessonId).data?.forEachIndexed { index,verbItem ->
-            wordsList?.get(index)?.wordInGerman = verbItem?.verbName
-            wordsList?.get(index)?.wordTranslationInArabic = verbItem?.verbTname
+            wordsList?.add(WordsResponse(verbItem?.verbId,verbItem?.verbName,verbItem?.verbTname))
         }
         this.wordsList.value = wordsList
     }
 
     suspend fun getOthers(levelId: Int, lessonId: Int) {
-        val wordsList: List<WordsResponse>? = listOf()
+        val wordsList: MutableList<WordsResponse>? = mutableListOf()
         webServices.getOthers(levelId,lessonId).data?.forEachIndexed { index,otherItem ->
-            wordsList?.get(index)?.wordInGerman = otherItem?.sentenceName
-            wordsList?.get(index)?.wordTranslationInArabic = otherItem?.sentenceTname
+            wordsList?.add(WordsResponse(otherItem?.sentenceId,otherItem?.sentenceName,otherItem?.sentenceTname))
         }
         this.wordsList.value = wordsList
     }
