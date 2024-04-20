@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.FragmentQuistionsBinding
+import com.projects.germanlanguageapp.ui.completeQuestions.CompleteQuestionsActivity
 import com.projects.germanlanguageapp.ui.rearrangeQuestions.RearrangeQuestionsActivity
 
 class QuestionsFragment : Fragment() {
@@ -55,7 +56,7 @@ class QuestionsFragment : Fragment() {
             startActivity(intent)
         })
         binding!!.completeButton.setOnClickListener(View.OnClickListener {
-            val intent = Intent(activity, complete_Q_Activity::class.java)
+            val intent = Intent(activity, CompleteQuestionsActivity::class.java)
             intent.putExtra("levelId",levelId)
             intent.putExtra("lessonId",lessonId)
             startActivity(intent)

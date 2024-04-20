@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.projects.germanlanguageapp.R
+import com.projects.germanlanguageapp.ui.completeQuestions.CompleteQuestionsActivity
 import com.projects.germanlanguageapp.ui.rearrangeQuestions.RearrangeQuestionsActivity
 
 
@@ -64,7 +65,7 @@ class ResultActivity : AppCompatActivity() {
                 intent.putExtra("lessonId",lessonId)
                 startActivity(intent)
             } else if (sourceClass == "complete_Q_Activity") {
-                val intent = Intent(this, complete_Q_Activity::class.java)
+                val intent = Intent(this, CompleteQuestionsActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 intent.putExtra("levelId",levelId)
                 intent.putExtra("lessonId",lessonId)

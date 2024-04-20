@@ -9,6 +9,7 @@ interface WebServices {
     suspend fun getLevels():LevelsResponse
     @GET("Level/Post")
     suspend fun postLevels(@Query("levelName") levelName: String)
+
     @GET("adjective/Get")
     suspend fun getAdjectives(@Query("levelId") levelId: Int,@Query("lessonId") lessonId: Int):AdjectivesResponse
     @GET("adjective/Post")
@@ -47,5 +48,8 @@ interface WebServices {
 
     @GET("rearrange/Get")
     suspend fun getRearrangeQuestions(@Query("levelId") levelId: Int,@Query("lessonId") lessonId: Int):RearrangeResponse
+
+    @GET("complete/Get")
+    suspend fun getCompleteQuestions(@Query("levelId") levelId: Int,@Query("lessonId") lessonId: Int):CompleteResponse
 
 }

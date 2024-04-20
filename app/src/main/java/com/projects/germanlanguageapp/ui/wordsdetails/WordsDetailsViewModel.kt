@@ -12,14 +12,11 @@ import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
-class WordsDetailsViewModel @Inject constructor (private val webServices: WebServices) : ViewModel() {
+class WordsDetailsViewModel @Inject constructor(private val webServices: WebServices) :
+    ViewModel() {
     var wordsList = MutableStateFlow<List<WordsResponse>?>(null)
     private var textToSpeech: TextToSpeech? = null
     fun onMicrophoneClicked(context: Context?) {
-
-        //Text = findViewById(R.id.Text);
-        //btnText = findViewById(R.id.btnText);
-
         // create an object textToSpeech and adding features into it
         textToSpeech = TextToSpeech(context) { i ->
             // if No error is found then only it will run
@@ -29,14 +26,14 @@ class WordsDetailsViewModel @Inject constructor (private val webServices: WebSer
             }
         }
     }
+
     fun speak(text: String?) {
         textToSpeech!!.speak(text, TextToSpeech.QUEUE_FLUSH, null)
     }
 
-
     suspend fun loadRequiredData(levelId: Int, lessonId: Int, wordsType: String) {
         try {
-            when(wordsType) {
+            when (wordsType) {
                 "adjectives" -> {
                     getAdjectives(levelId, lessonId)
                 }
@@ -56,10 +53,9 @@ class WordsDetailsViewModel @Inject constructor (private val webServices: WebSer
         }
     }
 
-
     suspend fun DeleteWord(wordsType: String, wordId: Int) {
         try {
-            when(wordsType) {
+            when (wordsType) {
                 "adjectives" -> {
                     DeleteAdjectives(wordId)
                 }
@@ -77,7 +73,14 @@ class WordsDetailsViewModel @Inject constructor (private val webServices: WebSer
             Log.e("DeleteWord", "Error deleting word: $e")
         }
     }
-    suspend fun PostWord(wordsType: String, wordName: String, wordTName: String, levelId: Int, lessonId: Int) {
+
+    suspend fun PostWord(
+        wordsType: String,
+        wordName: String,
+        wordTName: String,
+        levelId: Int,
+        lessonId: Int
+    ) {
         try {
             when (wordsType) {
                 "adjectives" -> {
@@ -111,18 +114,26 @@ class WordsDetailsViewModel @Inject constructor (private val webServices: WebSer
         }
     }
 
-
-
-
-
     suspend fun getAdjectives(levelId: Int, lessonId: Int) {
         val wordsList: MutableList<WordsResponse>? = mutableListOf()
-        webServices.getAdjectives(levelId,lessonId).data?.forEachIndexed { index,adjectiveItem ->
-            wordsList?.add(WordsResponse(adjectiveItem?.adjectiveId,adjectiveItem?.adjectiveName,adjectiveItem?.adjectiveTname))
+        webServices.getAdjectives(levelId, lessonId).data?.forEachIndexed { index, adjectiveItem ->
+            wordsList?.add(
+                WordsResponse(
+                    adjectiveItem?.adjectiveId,
+                    adjectiveItem?.adjectiveName,
+                    adjectiveItem?.adjectiveTname
+                )
+            )
         }
         this.wordsList.value = wordsList
     }
-    suspend fun PostAdjectives(adjectiveName: String, adjectiveTName: String, levelId: Int, lessonId: Int) {
+
+    suspend fun PostAdjectives(
+        adjectiveName: String,
+        adjectiveTName: String,
+        levelId: Int,
+        lessonId: Int
+    ) {
         webServices.PostAdjectives(adjectiveName, adjectiveTName, levelId, lessonId)
     }
 
@@ -136,11 +147,12 @@ class WordsDetailsViewModel @Inject constructor (private val webServices: WebSer
 
     suspend fun getNouns(levelId: Int, lessonId: Int) {
         val wordsList: MutableList<WordsResponse>? = mutableListOf()
-        webServices.getNouns(levelId,lessonId).data?.forEachIndexed { index,nounItem ->
-            wordsList?.add(WordsResponse(nounItem?.nounId,nounItem?.nounName,nounItem?.nounTname))
+        webServices.getNouns(levelId, lessonId).data?.forEachIndexed { index, nounItem ->
+            wordsList?.add(WordsResponse(nounItem?.nounId, nounItem?.nounName, nounItem?.nounTname))
         }
         this.wordsList.value = wordsList
     }
+
     suspend fun PostNouns(NounName: String, NounTName: String, levelId: Int, lessonId: Int) {
         webServices.Postnouns(NounName, NounTName, levelId, lessonId)
     }
@@ -155,13 +167,14 @@ class WordsDetailsViewModel @Inject constructor (private val webServices: WebSer
 
     suspend fun getVerbs(levelId: Int, lessonId: Int) {
         val wordsList: MutableList<WordsResponse>? = mutableListOf()
-        webServices.getVerbs(levelId,lessonId).data?.forEachIndexed { index,verbItem ->
-            wordsList?.add(WordsResponse(verbItem?.verbId,verbItem?.verbName,verbItem?.verbTname))
+        webServices.getVerbs(levelId, lessonId).data?.forEachIndexed { index, verbItem ->
+            wordsList?.add(WordsResponse(verbItem?.verbId, verbItem?.verbName, verbItem?.verbTname))
         }
         this.wordsList.value = wordsList
     }
+
     suspend fun PostVerbs(VerbName: String, VerbTName: String, levelId: Int, lessonId: Int) {
-        webServices.Postverbs(VerbName,VerbTName, levelId, lessonId)
+        webServices.Postverbs(VerbName, VerbTName, levelId, lessonId)
     }
 
     suspend fun PutVerbs(VerbId: Int, VerbName: String, VerbTName: String) {
@@ -172,24 +185,34 @@ class WordsDetailsViewModel @Inject constructor (private val webServices: WebSer
         webServices.Deleteverbs(VerbId)
     }
 
-
     suspend fun getOthers(levelId: Int, lessonId: Int) {
         val wordsList: MutableList<WordsResponse>? = mutableListOf()
-        webServices.getOthers(levelId,lessonId).data?.forEachIndexed { index,otherItem ->
-            wordsList?.add(WordsResponse(otherItem?.sentenceId,otherItem?.sentenceName,otherItem?.sentenceTname))
+        webServices.getOthers(levelId, lessonId).data?.forEachIndexed { index, otherItem ->
+            wordsList?.add(
+                WordsResponse(
+                    otherItem?.sentenceId,
+                    otherItem?.sentenceName,
+                    otherItem?.sentenceTname
+                )
+            )
         }
         this.wordsList.value = wordsList
     }
-    suspend fun PostOthers(SentenceName: String, SentenceTName: String, levelId: Int, lessonId: Int) {
+
+    suspend fun PostOthers(
+        SentenceName: String,
+        SentenceTName: String,
+        levelId: Int,
+        lessonId: Int
+    ) {
         webServices.PostOthers(SentenceName, SentenceTName, levelId, lessonId)
     }
 
     suspend fun PutOthers(SentenceId: Int, SentenceName: String, SentenceTName: String) {
         webServices.PutOthers(SentenceId, SentenceName, SentenceTName)
     }
+
     suspend fun DeleteOthers(SentenceId: Int) {
         webServices.DeleteOthers(SentenceId)
-        }
-
-
+    }
 }

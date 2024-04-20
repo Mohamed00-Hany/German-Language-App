@@ -37,7 +37,6 @@
             android:id="@+id/complete_Question_Text"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:text="Questin "
             android:textColor="@color/greeen1"
             android:textSize="18sp"
             android:textStyle="bold"
