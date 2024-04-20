@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.admin.Questions.ChooseAdminActivity"
+    android:background="@color/white">
+    <ImageView
+        android:id="@+id/green_cicle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/greencicle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/L1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/green_cicle3"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Geben Sie die Frage ein"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/edittext_1"
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/r1"
+            android:padding="10dp"
+            android:textColor="@color/greeen1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Geben Sie Ihre Auswahl ein \nSie werden durch  (/,-,\\)getrennt."
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edittext_2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/r1"
+            android:padding="10dp"
+            android:textColor="@color/greeen1"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="Geben Sie die Nummer der richtigen Wahl ein"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edittext_3"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/r1"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="@color/greeen1"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            />
+
+        <Button
+            android:id="@+id/Submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/rounded_button_background"
+            android:paddingHorizontal="47dp"
+            android:paddingVertical="12dp"
+            android:text="Einreichen"
+            android:textAllCaps="false"
+            android:textSize="23dp"
+            android:textStyle="bold"
+
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

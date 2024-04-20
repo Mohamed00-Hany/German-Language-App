@@ -10,6 +10,7 @@ import com.projects.germanlanguageapp.databinding.ActivityLessonsBinding
 import com.projects.germanlanguageapp.ui.admin.QuestionsOrWordsActivity
 import com.projects.germanlanguageapp.ui.lessons.LessonsAdapter
 import com.projects.germanlanguageapp.ui.lessons.LessonsViewModel
+import com.projects.germanlanguageapp.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,8 +29,11 @@ class LessonsAdminActivity:AppCompatActivity() {
         lessonsRecycler.adapter=lessonsAdapter
         lessonsAdapter.onLessonClickListener=object : LessonsAdapter.OnLessonClick {
             override fun onClick(position: Int, lessonName: String?) {
-                val levelName=intent.getIntExtra("levelName",0)
-                startActivity(Intent(this@LessonsAdminActivity,QuestionsOrWordsActivity::class.java))
+                val levelId=intent.getIntExtra("levelId",0)
+                val intent = Intent(this@LessonsAdminActivity, QuestionsOrWordsActivity::class.java)
+                intent.putExtra("levelId",levelId)
+                intent.putExtra("lessonId",position)
+                startActivity(intent)
             }
         }
     }

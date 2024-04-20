@@ -1,5 +1,6 @@
 package com.projects.germanlanguageapp.ui.levels
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.projects.germanlanguageapp.data.dataSources.remote.apis.WebServices
@@ -14,7 +15,19 @@ class LevelsViewModel @Inject constructor(val webServices: WebServices) : ViewMo
     val levels=MutableStateFlow<List<LevelsResponseItem?>?>(null)
     fun getLevels() {
         viewModelScope.launch {
-            levels.value = webServices.getLevels().levelsResponse
+            try {
+                levels.value = webServices.getLevels().levelsResponse
+            } catch (e: Exception) {
+                Log.e("getLevelsError", "Error fetching levels: ${e.message}")
+            }
+        }
+    }
+
+    suspend fun postLevels(levelName: String) {
+        try {
+            webServices.postLevels(levelName)
+        } catch (e: Exception) {
+            Log.e("postLevelsError", "Error posting levels: ${e.message}")
         }
     }
 }

@@ -5,34 +5,45 @@ import android.os.Bundle
 import android.view.Gravity
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.ActivityAdminLevelBinding
-import com.projects.germanlanguageapp.domain.models.LevelsResponseItem
 import com.projects.germanlanguageapp.ui.admin.lessons.LessonsAdminActivity
+import com.projects.germanlanguageapp.ui.levels.LevelsAdapter
+import com.projects.germanlanguageapp.ui.levels.LevelsViewModel
+import kotlinx.coroutines.launch
+import dagger.hilt.android.AndroidEntryPoint
+@AndroidEntryPoint
 class AdminLevel : AppCompatActivity() {
+    private val viewModel: LevelsViewModel by viewModels()
     private lateinit var binding: ActivityAdminLevelBinding
-    private lateinit var levelAdminAdapter: LevelAdminAdapter
+    private lateinit var levelsAdapter: LevelsAdapter
     private lateinit var levelsRecycler: RecyclerView
-    private var levelsList = mutableListOf<LevelsResponseItem>(
-        LevelsResponseItem(1, "Ebene 1"),
-        LevelsResponseItem(2, "Ebene 2")
-    )
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_admin_level)
-        levelAdminAdapter = LevelAdminAdapter()
-        levelsRecycler = binding.levelsAdminRecycler
-        levelsRecycler.adapter = levelAdminAdapter
-        levelAdminAdapter.changeData(levelsList)
+        binding.vm=viewModel
+        viewModel.getLevels()
+        levelsAdapter=LevelsAdapter(viewModel.levels.value)
+        lifecycleScope.launch {
+            viewModel.levels.collect {
+                levelsAdapter.changeData(it)
+            }
+        }
+        levelsRecycler=binding.levelsAdminRecycler
+        levelsRecycler.adapter=levelsAdapter
 
-        levelAdminAdapter.onLevelClickListener = object : LevelAdminAdapter.OnLevelClick {
+        levelsAdapter.onLevelClickListener=object : LevelsAdapter.OnLevelClick {
             override fun onClick(position: Int, levelId: Int?) {
-                val intent = Intent(this@AdminLevel, LessonsAdminActivity::class.java)
-                intent.putExtra("levelId", levelId)
+                val intent=Intent(this@AdminLevel, LessonsAdminActivity::class.java)
+                intent.putExtra("levelId",levelId)
                 startActivity(intent)
             }
         }
@@ -46,14 +57,22 @@ class AdminLevel : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Ebene hinzufügen")
         val editText = EditText(this).apply {
-            hint = "Geben Sie den Ebenennamen ein"
             maxLines = 1
-           gravity=Gravity.CENTER
+            gravity = Gravity.CENTER
         }
         builder.setView(editText)
         builder.setPositiveButton("Hinzufügen") { dialogInterface, _ ->
-            val levelName = editText.text.toString()
-            addLevelToList(levelName)
+            val levelName = editText.text.toString().trim()
+            if (levelName.isNotEmpty()) {
+                lifecycleScope.launch {
+                    viewModel.postLevels(levelName)
+                    viewModel.getLevels()
+                    levelsAdapter.updateData(viewModel.levels.value)
+
+                }
+            } else {
+                Toast.makeText(this@AdminLevel, "Please enter a level name", Toast.LENGTH_SHORT).show()
+            }
             dialogInterface.dismiss()
         }
         builder.setNegativeButton("Abbrechen") { dialogInterface, _ ->
@@ -67,10 +86,9 @@ class AdminLevel : AppCompatActivity() {
         dialog.getButton(AlertDialog.BUTTON_NEGATIVE)?.apply {
             isAllCaps = false
         }
+
     }
-    private fun addLevelToList(levelName: String) {
-        val newLevel = LevelsResponseItem(levelsList.size + 1, levelName)
-        levelsList.add(newLevel)
-        levelAdminAdapter.addLevel(newLevel)
-    }
+
+
+
 }

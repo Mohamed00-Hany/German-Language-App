@@ -44,7 +44,6 @@
             android:background="@drawable/baseline_edit_note_24"
             android:id="@+id/Edit_button"/>
 
-            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

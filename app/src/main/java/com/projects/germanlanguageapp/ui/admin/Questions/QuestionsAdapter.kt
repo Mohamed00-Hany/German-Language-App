@@ -5,9 +5,8 @@ import android.widget.Button
 import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
 import com.projects.germanlanguageapp.R
-
 class QuestionsAdapter(
-    private val dataSet: List<String>,
+    private var dataSet: List<String>,
     private val clickListener: QuestionClickListener
 ) : RecyclerView.Adapter<QuestionsAdapter.ViewHolder>() {
 
@@ -45,7 +44,6 @@ class QuestionsAdapter(
             clickListener.onEditClick(position)
         }
     }
-
     override fun getItemCount(): Int {
         return dataSet.size
     }

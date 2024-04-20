@@ -29,7 +29,7 @@
     <string name="Words">Wörter</string>
     <string name="Add_level">Neue Ebene hinzufügen</string>
     <string name="modify_question">Zu welcher Frage ändern?</string>
-
+    <string name="modify_Words">Über welches Wort ändern?</string>
 
 
 </resources>

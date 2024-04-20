@@ -32,6 +32,10 @@ class LevelsAdapter(private var levelsList:List<LevelsResponseItem?>?):RecyclerV
         this.levelsList = levelsList
         notifyDataSetChanged()
     }
+    fun updateData(levelsList: List<LevelsResponseItem?>?) {
+        this.levelsList = levelsList
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(private val itemBinding: LevelsRecyclerItemBinding) :RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(level: LevelsResponseItem?,position: Int,onLevelClickListener:OnLevelClick)
