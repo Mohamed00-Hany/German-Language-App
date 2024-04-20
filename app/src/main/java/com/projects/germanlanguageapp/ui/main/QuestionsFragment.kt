@@ -2,7 +2,6 @@ package com.projects.germanlanguageapp.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.FragmentQuistionsBinding
+import com.projects.germanlanguageapp.ui.rearrangeQuestions.RearrangeQuestionsActivity
 
 class QuestionsFragment : Fragment() {
     private var binding: FragmentQuistionsBinding? = null
@@ -38,18 +38,26 @@ class QuestionsFragment : Fragment() {
         complete_button = root.findViewById(R.id.complete_button)
         binding!!.chooseButton.setOnClickListener(View.OnClickListener {
             val intent = Intent(activity, choose_Q::class.java)
+            intent.putExtra("levelId",levelId)
+            intent.putExtra("lessonId",lessonId)
             startActivity(intent)
         })
         binding!!.rearrangeButton.setOnClickListener(View.OnClickListener {
-            val intent = Intent(activity, Rearrangequestions::class.java)
+            val intent = Intent(activity, RearrangeQuestionsActivity::class.java)
+            intent.putExtra("levelId",levelId)
+            intent.putExtra("lessonId",lessonId)
             startActivity(intent)
         })
         binding!!.matchButton.setOnClickListener(View.OnClickListener {
             val intent = Intent(activity, MatchActivity::class.java)
+            intent.putExtra("levelId",levelId)
+            intent.putExtra("lessonId",lessonId)
             startActivity(intent)
         })
         binding!!.completeButton.setOnClickListener(View.OnClickListener {
             val intent = Intent(activity, complete_Q_Activity::class.java)
+            intent.putExtra("levelId",levelId)
+            intent.putExtra("lessonId",lessonId)
             startActivity(intent)
         })
         return root

@@ -4,7 +4,7 @@ import com.projects.germanlanguageapp.domain.models.*
 import retrofit2.http.*
 
 interface WebServices {
-    @GET("Level/Get")
+    @GET("level/Get")
     suspend fun getLevels():LevelsResponse
 
     @GET("adjective/Get")
@@ -18,5 +18,8 @@ interface WebServices {
 
     @GET("sentence/Get")
     suspend fun getOthers(@Query("levelId") levelId: Int,@Query("lessonId") lessonId: Int):OthersResponse
+
+    @GET("rearrange/Get")
+    suspend fun getRearrangeQuestions(@Query("levelId") levelId: Int,@Query("lessonId") lessonId: Int):RearrangeResponse
 
 }

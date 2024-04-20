@@ -32,7 +32,7 @@ class LessonsAdapter(private val lessonsList:List<String>?):RecyclerView.Adapter
             itemBinding.title=lesson
             itemBinding.invalidateAll()
             itemBinding.levelButton.setOnClickListener{
-                onLessonClickListener.onClick(position,lesson)
+                onLessonClickListener.onClick(position+1,lesson)
             }
         }
     }

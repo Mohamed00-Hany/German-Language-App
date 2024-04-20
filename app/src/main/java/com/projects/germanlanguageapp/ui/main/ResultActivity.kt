@@ -6,13 +6,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.projects.germanlanguageapp.R
+import com.projects.germanlanguageapp.ui.rearrangeQuestions.RearrangeQuestionsActivity
 
 
 class ResultActivity : AppCompatActivity() {
 
+    private var levelId = 0
+    private var lessonId = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
+        levelId = intent.getIntExtra("levelId", 0)
+        lessonId = intent.getIntExtra("lessonId", 0)
         val resultTextView: TextView = findViewById(R.id.result_text)
         val finishButton: Button = findViewById(R.id.finishButton)
         val restartButton: Button = findViewById(R.id.restartButton)
@@ -42,18 +48,26 @@ class ResultActivity : AppCompatActivity() {
             if (sourceClass == "choose_Q") {
                 val intent = Intent(this, choose_Q::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("levelId",levelId)
+                intent.putExtra("lessonId",lessonId)
                 startActivity(intent)
             } else if (sourceClass == "Rearrangequestions") {
-                val intent = Intent(this, Rearrangequestions::class.java)
+                val intent = Intent(this, RearrangeQuestionsActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("levelId",levelId)
+                intent.putExtra("lessonId",lessonId)
                 startActivity(intent)
             } else if (sourceClass == "MatchActivity") {
                 val intent = Intent(this, MatchActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("levelId",levelId)
+                intent.putExtra("lessonId",lessonId)
                 startActivity(intent)
             } else if (sourceClass == "complete_Q_Activity") {
                 val intent = Intent(this, complete_Q_Activity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("levelId",levelId)
+                intent.putExtra("lessonId",lessonId)
                 startActivity(intent)
             }
             finish()

@@ -136,6 +136,7 @@ class MatchActivity : AppCompatActivity() {
                 intent.putExtra("SCORE", score)
                 intent.putExtra("NoOfQuestions", questions.size)
                 startActivity(intent)
+                finish()
             }
         }
     }

@@ -67,9 +67,8 @@ class complete_Q_Activity : AppCompatActivity() {
                 intent.putExtra("SCORE", score)
                 intent.putExtra("NoOfQuestions", questions.size)
                 startActivity(intent)
+                finish()
             }
-
-
         }
     }
 }

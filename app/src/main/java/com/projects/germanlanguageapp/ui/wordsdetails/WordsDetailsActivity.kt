@@ -12,6 +12,7 @@ import com.projects.germanlanguageapp.databinding.ActivityWordsDetailsBinding
 import com.projects.germanlanguageapp.ui.main.MainActivity
 import com.projects.germanlanguageapp.ui.recording.RecordingActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -37,9 +38,10 @@ class WordsDetailsActivity: AppCompatActivity() {
         wordsRecycler=binding.wordsRecycler
         wordsRecycler.adapter=wordsAdapter
         viewModel.onMicrophoneClicked(applicationContext)
-
-        lifecycleScope.launch {
+        lifecycleScope.launch(Dispatchers.IO) {
             wordsType?.let { viewModel.loadRequiredData(levelId!!, lessonId!!, it) }
+        }
+        lifecycleScope.launch(Dispatchers.Main) {
             viewModel.wordsList.collectLatest {
                 wordsAdapter.changeData(it)
             }
