@@ -18,28 +18,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:src="@drawable/corner_image"/>
 
         <TextView
             android:id="@+id/text_1"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+
             android:text="Anmeld"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"
             android:layout_marginTop="38dp"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="5dp"
+            app:layout_constraintRight_toLeftOf="@id/corner_image"
+            />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/text_1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:padding="16dp"
             android:text="Willkommen zurück! wir haben dich vermisst!"
             android:textSize="28sp"
@@ -111,8 +115,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/login_layout"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:paddingHorizontal="32dp"
             android:paddingVertical="16dp"
             android:text="Anmeld"

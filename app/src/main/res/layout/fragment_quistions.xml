@@ -18,22 +18,24 @@
             android:id="@+id/green_cicle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/greencicle"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/corner_image"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/W1"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="38dp"
             android:text="@string/Training"
             android:textColor="@color/greeen1"
             android:textSize="29sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="5dp"
+            app:layout_constraintRight_toLeftOf="@id/green_cicle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/choose_button"
@@ -45,13 +47,13 @@
             android:text="@string/Choose"
             android:textAllCaps="false"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/W1"
-            app:layout_constraintEnd_toStartOf="@id/rearrange_button"
+            app:layout_constraintRight_toLeftOf="@id/rearrange_button"
             app:layout_constraintBottom_toTopOf="@id/match_button"
             android:layout_marginTop="50dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
             android:textColor="@color/white"
             />
 
@@ -64,12 +66,12 @@
             android:text="@string/Rearrange"
             android:textAllCaps="false"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/W1"
-            app:layout_constraintStart_toEndOf="@id/choose_button"
+            app:layout_constraintLeft_toRightOf="@id/choose_button"
             app:layout_constraintBottom_toTopOf="@id/complete_button"
             android:layout_marginTop="50dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
             android:textColor="@color/white"
             />
 
@@ -83,12 +85,12 @@
             android:text="@string/Match"
             android:textAllCaps="false"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/choose_button"
-            app:layout_constraintEnd_toStartOf="@id/complete_button"
+            app:layout_constraintRight_toLeftOf="@id/complete_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
             android:textColor="@color/white"
             />
 
@@ -102,11 +104,11 @@
             android:text="@string/Complete"
             android:textAllCaps="false"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rearrange_button"
-            app:layout_constraintStart_toEndOf="@id/match_button"
+            app:layout_constraintLeft_toRightOf="@id/match_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
             android:textColor="@color/white"
             />
 

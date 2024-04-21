@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -18,33 +19,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:src="@drawable/corner_image"/>
 
         <TextView
             android:id="@+id/text_1"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             android:text="Wählen Sie Ihre Lektion aus"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"
             android:layout_marginTop="38dp"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginLeft="16dp"
+            app:layout_constraintRight_toLeftOf="@id/corner_image"
+            android:layout_marginRight="5dp"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lessons_recycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/corner_image"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_marginTop="16dp"/>
-
+            android:layout_marginTop="16dp"
+            tools:listitem="@layout/levels_recycler_item"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

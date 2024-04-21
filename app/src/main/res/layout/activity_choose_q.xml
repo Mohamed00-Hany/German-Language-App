@@ -16,8 +16,8 @@
             android:id="@+id/green_cicle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/greencicle"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/corner_image"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -26,7 +26,7 @@
             android:layout_height="100dp"
             android:src="@drawable/thinker"
             app:layout_constraintBottom_toBottomOf="@id/green_cicle"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@id/green_cicle" />
 
         <LinearLayout
@@ -38,7 +38,10 @@
             android:padding="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/green_cicle"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            >
 
             <TextView
                 android:id="@+id/question_text"
@@ -118,7 +121,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:drawableEnd="@drawable/arrow_forward"
+                android:drawableRight="@drawable/arrow_forward"
                 />
         </LinearLayout>
 

@@ -17,8 +17,8 @@
             android:layout_width="0dp"
             android:layout_height="65dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/Edit_button"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/Edit_button"
             android:text="@{title}"
             android:textColor="@color/white"
             android:textSize="24sp"
@@ -31,19 +31,17 @@
             app:layout_constraintTop_toTopOf="@id/Questions_button"
             app:layout_constraintBottom_toBottomOf="@id/Questions_button"
             android:background="@drawable/ic_trash_can"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             />
         <ImageButton
             android:layout_marginHorizontal="10dp"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            app:layout_constraintStart_toEndOf="@id/Questions_button"
+            app:layout_constraintLeft_toRightOf="@id/Questions_button"
             app:layout_constraintTop_toTopOf="@id/Questions_button"
             app:layout_constraintBottom_toBottomOf="@id/Questions_button"
-            app:layout_constraintEnd_toStartOf="@id/Delete_button"
+            app:layout_constraintRight_toLeftOf="@id/Delete_button"
             android:background="@drawable/baseline_edit_note_24"
             android:id="@+id/Edit_button"/>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -31,8 +31,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/green_cicle"
-        app:layout_constraintVertical_bias="0.0">
-
+        app:layout_constraintVertical_bias="0.0"
+        android:gravity="left">
         <TextView
             android:layout_marginTop="30dp"
             android:id="@+id/title1"

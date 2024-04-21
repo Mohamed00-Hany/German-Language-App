@@ -7,6 +7,6 @@
     android:textColor="@color/black"
     android:textStyle="bold"
     android:textAlignment="center"
-    android:drawableEnd="@drawable/spinner_arrow"
+    android:drawableRight="@drawable/spinner_arrow"
 
     />

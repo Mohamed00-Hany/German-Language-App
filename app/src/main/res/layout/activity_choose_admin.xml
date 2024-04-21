@@ -6,13 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.admin.Questions.Choose.ChooseAdminActivity"
     android:background="@color/white">
+
     <ImageView
         android:id="@+id/green_cicle3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/greencicle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:src="@drawable/corner_image"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <LinearLayout
         android:id="@+id/L1"
@@ -21,14 +23,14 @@
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/green_cicle3"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
+            android:layout_gravity="left"
             android:id="@+id/title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +38,6 @@
             android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold" />
-
 
         <EditText
             android:id="@+id/edittext_1"
@@ -50,6 +51,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:layout_gravity="left"
             android:id="@+id/title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,7 +71,6 @@
             android:padding="10dp"
             android:textColor="@color/greeen1"
             android:textStyle="bold"
-
             />
 
         <TextView
@@ -94,8 +95,7 @@
             android:padding="10dp"
             android:textColor="@color/greeen1"
             android:textStyle="bold"
-            android:textAlignment="center"
-            />
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/Submit_button"
@@ -109,9 +109,7 @@
             android:text="Einreichen"
             android:textAllCaps="false"
             android:textSize="23dp"
-            android:textStyle="bold"
-
-            />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
