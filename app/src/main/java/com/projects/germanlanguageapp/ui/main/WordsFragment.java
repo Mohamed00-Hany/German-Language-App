@@ -2,7 +2,6 @@ package com.projects.germanlanguageapp.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +21,8 @@ public class WordsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        Words_page_ViewModel wordspageViewModel =
-                new ViewModelProvider(this).get(Words_page_ViewModel.class);
+        WordsViewModel wordspageViewModel =
+                new ViewModelProvider(this).get(WordsViewModel.class);
         levelId = requireActivity().getIntent().getIntExtra("levelId",0) ;
         lessonId = requireActivity().getIntent().getIntExtra("lessonId",0) ;
         binding = FragmentWordsBinding.inflate(inflater, container, false);

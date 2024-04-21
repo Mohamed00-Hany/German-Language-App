@@ -72,7 +72,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.main.choose_Q"
+            android:name=".ui.chooseQuestions.ChooseQuestionsActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

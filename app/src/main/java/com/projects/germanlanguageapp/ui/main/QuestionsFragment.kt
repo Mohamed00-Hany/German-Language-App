@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.FragmentQuistionsBinding
+import com.projects.germanlanguageapp.ui.chooseQuestions.ChooseQuestionsActivity
 import com.projects.germanlanguageapp.ui.completeQuestions.CompleteQuestionsActivity
 import com.projects.germanlanguageapp.ui.rearrangeQuestions.RearrangeQuestionsActivity
 
@@ -27,7 +28,7 @@ class QuestionsFragment : Fragment() {
         container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val homeViewModel = ViewModelProvider(this).get(
-            Questions_page_ViewModel::class.java
+            QuestionsViewModel::class.java
         )
         levelId = (requireActivity() as MainActivity).intent.getIntExtra("levelId", 0)
         lessonId = (requireActivity() as MainActivity).intent.getIntExtra("lessonId", 0)
@@ -38,7 +39,7 @@ class QuestionsFragment : Fragment() {
         match_button = root.findViewById(R.id.match_button)
         complete_button = root.findViewById(R.id.complete_button)
         binding!!.chooseButton.setOnClickListener(View.OnClickListener {
-            val intent = Intent(activity, choose_Q::class.java)
+            val intent = Intent(activity, ChooseQuestionsActivity::class.java)
             intent.putExtra("levelId",levelId)
             intent.putExtra("lessonId",lessonId)
             startActivity(intent)

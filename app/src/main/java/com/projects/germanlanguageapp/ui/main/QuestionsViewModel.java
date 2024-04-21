@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class Words_page_ViewModel extends ViewModel {
+public class QuestionsViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public Words_page_ViewModel() {
+    public QuestionsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is home fragment");
     }
 
     public LiveData<String> getText() {

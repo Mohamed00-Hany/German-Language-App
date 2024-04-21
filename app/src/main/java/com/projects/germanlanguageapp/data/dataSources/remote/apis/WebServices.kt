@@ -63,4 +63,7 @@ interface WebServices {
     suspend fun PutCompleteQuestions(@Query("CompleteId") CompleteId: Int,@Query("CompleteNameQuestion") CompleteNameQuestion: String,@Query("CompleteNameAnswer") CompleteNameAnswer: String)
     @GET("complete/Delete")
     suspend fun DeleteCompleteQuestions(@Query("CompleteId") CompleteId: Int)
+
+    @GET("choose/Get")
+    suspend fun getChooseQuestions(@Query("levelId") levelId: Int,@Query("lessonId") lessonId: Int):ChooseResponse
 }

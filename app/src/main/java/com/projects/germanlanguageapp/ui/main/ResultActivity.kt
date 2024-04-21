@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.projects.germanlanguageapp.R
+import com.projects.germanlanguageapp.ui.chooseQuestions.ChooseQuestionsActivity
 import com.projects.germanlanguageapp.ui.completeQuestions.CompleteQuestionsActivity
 import com.projects.germanlanguageapp.ui.rearrangeQuestions.RearrangeQuestionsActivity
 
@@ -41,13 +42,15 @@ class ResultActivity : AppCompatActivity() {
         finishButton.setOnClickListener {
             val intent = Intent(this@ResultActivity, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.putExtra("levelId",levelId)
+            intent.putExtra("lessonId",lessonId)
             startActivity(intent)
             finish()
         }
 
         restartButton.setOnClickListener {
             if (sourceClass == "choose_Q") {
-                val intent = Intent(this, choose_Q::class.java)
+                val intent = Intent(this, ChooseQuestionsActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 intent.putExtra("levelId",levelId)
                 intent.putExtra("lessonId",lessonId)

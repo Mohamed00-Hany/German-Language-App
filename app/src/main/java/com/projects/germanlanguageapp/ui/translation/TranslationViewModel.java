@@ -1,14 +1,14 @@
-package com.projects.germanlanguageapp.ui.main;
+package com.projects.germanlanguageapp.ui.translation;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class Translation_page_ViewModel extends ViewModel {
+public class TranslationViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public Translation_page_ViewModel() {
+    public TranslationViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is Translation_page fragment");
     }

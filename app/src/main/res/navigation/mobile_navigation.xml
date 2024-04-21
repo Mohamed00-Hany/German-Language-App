@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/Translation_page"
-        android:name="com.projects.germanlanguageapp.ui.main.Translation_page_Fragment"
+        android:name="com.projects.germanlanguageapp.ui.translation.TranslationFragment"
         android:label="@string/title_Translation"
         tools:layout="@layout/fragment_translation" />
 </navigation>

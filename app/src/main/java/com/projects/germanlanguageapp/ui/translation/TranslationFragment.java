@@ -1,4 +1,4 @@
-package com.projects.germanlanguageapp.ui.main;
+package com.projects.germanlanguageapp.ui.translation;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -23,7 +23,7 @@ import com.google.mlkit.nl.translate.TranslatorOptions;
 import com.projects.germanlanguageapp.R;
 import com.projects.germanlanguageapp.databinding.FragmentTranslationBinding;
 
-public class Translation_page_Fragment extends Fragment {
+public class TranslationFragment extends Fragment {
 
     private FragmentTranslationBinding binding;
     private Button translate_button;
@@ -36,8 +36,8 @@ public class Translation_page_Fragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        Translation_page_ViewModel translationpageViewModel =
-                new ViewModelProvider(this).get(Translation_page_ViewModel.class);
+        TranslationViewModel translationpageViewModel =
+                new ViewModelProvider(this).get(TranslationViewModel.class);
 
         binding = FragmentTranslationBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
