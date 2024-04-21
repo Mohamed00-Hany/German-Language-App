@@ -1,4 +1,4 @@
-package com.projects.germanlanguageapp.ui.admin.Questions
+package com.projects.germanlanguageapp.ui.admin.Questions.Choose
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -2,6 +2,7 @@ package com.projects.germanlanguageapp.ui.admin.levels
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.Gravity
 import android.widget.EditText
 import android.widget.ImageButton
@@ -10,6 +11,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.ActivityAdminLevelBinding
@@ -39,6 +41,8 @@ class AdminLevel : AppCompatActivity() {
         }
         levelsRecycler=binding.levelsAdminRecycler
         levelsRecycler.adapter=levelsAdapter
+        val layoutManager = LinearLayoutManager(this)
+        levelsRecycler.layoutManager = layoutManager
 
         levelsAdapter.onLevelClickListener=object : LevelsAdapter.OnLevelClick {
             override fun onClick(position: Int, levelId: Int?) {
@@ -67,10 +71,11 @@ class AdminLevel : AppCompatActivity() {
                 lifecycleScope.launch {
                     viewModel.postLevels(levelName)
                     viewModel.getLevels()
-                    levelsAdapter.updateData(viewModel.levels.value)
-
-                }
-            } else {
+                    levelsAdapter.changeData(viewModel.levels.value)
+                    Handler().postDelayed({
+                        levelsRecycler.scrollToPosition(levelsAdapter.itemCount - 1)
+                    }, 500)   }}
+                else {
                 Toast.makeText(this@AdminLevel, "Please enter a level name", Toast.LENGTH_SHORT).show()
             }
             dialogInterface.dismiss()

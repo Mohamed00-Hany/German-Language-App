@@ -48,8 +48,19 @@ interface WebServices {
 
     @GET("rearrange/Get")
     suspend fun getRearrangeQuestions(@Query("levelId") levelId: Int,@Query("lessonId") lessonId: Int):RearrangeResponse
+    @GET("rearrange/Post")
+    suspend fun PostRearrangeQuestions(@Query("RearrangeNameQuestion") RearrangeNameQuestion: String,@Query("RearrangeNameAnswer") RearrangeNameAnswer: String,@Query("levelId") levelId: Int,@Query("lessonId") lessonId: Int)
+    @GET("rearrange/Put")
+    suspend fun PutRearrangeQuestions(@Query("RearrangeId") RearrangeId: Int,@Query("RearrangeNameQuestion") RearrangeNameQuestion: String,@Query("RearrangeNameAnswer") RearrangeNameAnswer: String)
+    @GET("rearrange/Delete")
+    suspend fun DeleteRearrangeQuestions(@Query("RearrangeId") RearrangeId: Int)
 
     @GET("complete/Get")
     suspend fun getCompleteQuestions(@Query("levelId") levelId: Int,@Query("lessonId") lessonId: Int):CompleteResponse
-
+    @GET("complete/Post")
+    suspend fun PostCompleteQuestions(@Query("CompleteNameQuestion") CompleteNameQuestion: String,@Query("CompleteNameAnswer") CompleteNameAnswer: String,@Query("levelId") levelId: Int,@Query("lessonId") lessonId: Int)
+    @GET("complete/Put")
+    suspend fun PutCompleteQuestions(@Query("CompleteId") CompleteId: Int,@Query("CompleteNameQuestion") CompleteNameQuestion: String,@Query("CompleteNameAnswer") CompleteNameAnswer: String)
+    @GET("complete/Delete")
+    suspend fun DeleteCompleteQuestions(@Query("CompleteId") CompleteId: Int)
 }

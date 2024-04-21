@@ -112,19 +112,23 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.admin.Questions.MatchAdminActivity"
+            android:name=".ui.admin.Questions.Match.MatchAdminActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.admin.Questions.ChooseAdminActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.admin.Questions.QuestionsRecyclerViewActivity"
+            android:name=".ui.admin.Questions.Choose.ChooseAdminActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.admin.Words.WordsRecyclerViewActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.admin.Questions.Rearrange.RearrangeRecyclerView"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.admin.Questions.Complete.CompleteRecyclerView"
             android:exported="false"
             android:screenOrientation="portrait" />
     </application>

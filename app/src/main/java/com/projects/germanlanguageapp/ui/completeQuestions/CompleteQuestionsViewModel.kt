@@ -1,5 +1,6 @@
 package com.projects.germanlanguageapp.ui.completeQuestions
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.projects.germanlanguageapp.data.dataSources.remote.apis.WebServices
 import com.projects.germanlanguageapp.domain.models.CompleteItem
@@ -18,5 +19,29 @@ class CompleteQuestionsViewModel @Inject constructor (private val webServices: W
             listOf()
         }
     }
+    suspend fun PostCompleteQuestions(
+        CompleteNameQuestion: String,
+        CompleteNameAnswer: String,
+        levelId: Int,
+        lessonId: Int
+    ) {
+        try {
+        webServices.PostCompleteQuestions(CompleteNameQuestion, CompleteNameAnswer, levelId, lessonId)
+        } catch (e:Exception) {
+            Log.e("PostCompleteQuestions", "Error Complete Questions: ${e.message}")
+    }}
 
+    suspend fun PutCompleteQuestions(CompleteId: Int, CompleteQuestions: String, CompleteNameAnswer: String) {
+        try {
+        webServices.PutCompleteQuestions(CompleteId, CompleteQuestions, CompleteNameAnswer)
+    }catch (e:Exception) {
+            Log.e("PutCompleteQuestions", "Error Complete Questions: ${e.message}")
+        }}
+
+    suspend fun DeleteCompleteQuestions(CompleteId: Int) {
+        try {
+        webServices.DeleteCompleteQuestions(CompleteId)
+    }catch (e:Exception) {
+        Log.e("DeleteCompleteQuestions", "Error Complete Questions: ${e.message}")
+    }}
 }

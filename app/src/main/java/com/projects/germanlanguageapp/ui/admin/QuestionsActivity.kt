@@ -1,31 +1,49 @@
 package com.projects.germanlanguageapp.ui.admin
-
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.projects.germanlanguageapp.R
-import com.projects.germanlanguageapp.ui.admin.Questions.QuestionsRecyclerViewActivity
-class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
+import com.projects.germanlanguageapp.ui.admin.Questions.Complete.CompleteRecyclerView
+import com.projects.germanlanguageapp.ui.admin.Questions.Rearrange.RearrangeRecyclerView
+
+class QuestionsActivity : AppCompatActivity() {
+    private var levelId: Int = 0
+    private var lessonId: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_questions)
-        findViewById<View>(R.id.choose_button).setOnClickListener(this)
-        findViewById<View>(R.id.rearrange_button).setOnClickListener(this)
-        findViewById<View>(R.id.match_button).setOnClickListener(this)
-        findViewById<View>(R.id.complete_button).setOnClickListener(this)
-    }
+        levelId = intent.getIntExtra("levelId", 0)
+        lessonId = intent.getIntExtra("lessonId", 0)
 
-    override fun onClick(view: View) {
+        val chooseButton = findViewById<View>(R.id.choose_button)
+        val rearrangeButton = findViewById<View>(R.id.rearrange_button)
+        val matchButton = findViewById<View>(R.id.match_button)
+        val completeButton = findViewById<View>(R.id.complete_button)
 
-        val intent = Intent(this, QuestionsRecyclerViewActivity::class.java)
+        chooseButton.setOnClickListener {}
+        matchButton.setOnClickListener {}
 
-        when (view.id) {
-            R.id.choose_button -> intent.putExtra("buttonClicked", "choose")
-            R.id.rearrange_button -> intent.putExtra("buttonClicked", "rearrange")
-            R.id.match_button -> intent.putExtra("buttonClicked", "match")
-            R.id.complete_button -> intent.putExtra("buttonClicked", "complete")
+        rearrangeButton.setOnClickListener {
+            val intent = Intent(this, RearrangeRecyclerView::class.java).apply {
+                putExtra("levelId", levelId)
+                putExtra("lessonId", lessonId)
+            }
+            startActivity(intent)
         }
-        startActivity(intent)
+
+
+
+        completeButton.setOnClickListener {
+            val intent = Intent(this, CompleteRecyclerView::class.java).apply {
+                putExtra("levelId", levelId)
+                putExtra("lessonId", lessonId)
+            }
+            startActivity(intent)
+        }
+
+
+
+
     }
 }

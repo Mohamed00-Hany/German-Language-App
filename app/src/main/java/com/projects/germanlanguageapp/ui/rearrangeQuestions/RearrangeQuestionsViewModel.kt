@@ -1,5 +1,6 @@
 package com.projects.germanlanguageapp.ui.rearrangeQuestions
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.projects.germanlanguageapp.data.dataSources.remote.apis.WebServices
 import com.projects.germanlanguageapp.domain.models.RearrangeItem
@@ -18,5 +19,30 @@ class RearrangeQuestionsViewModel @Inject constructor (private val webServices: 
             listOf()
         }
     }
+    suspend fun PostRearrangeQuestions(
+        RearrangeNameQuestion: String,
+        RearrangeNameAnswer: String,
+        levelId: Int,
+        lessonId: Int
+    ) {
+        try {
+            webServices.PostRearrangeQuestions(RearrangeNameQuestion, RearrangeNameAnswer, levelId, lessonId)
+        } catch (e:Exception) {
+            Log.e("PostRearrangeQuestions", "Error Rearrange Questions: ${e.message}")
+        }}
+
+    suspend fun PutRearrangeQuestions(RearrangeId: Int, RearrangeQuestions: String, RearrangeNameAnswer: String) {
+        try {
+            webServices.PutRearrangeQuestions(RearrangeId, RearrangeQuestions, RearrangeNameAnswer)
+        }catch (e:Exception) {
+            Log.e("PutRearrangeQuestions", "Error Rearrange Questions: ${e.message}")
+        }}
+
+    suspend fun DeleteRearrangeQuestions(RearrangeId: Int) {
+        try {
+            webServices.DeleteRearrangeQuestions(RearrangeId)
+        }catch (e:Exception) {
+            Log.e("DeleteRearrangeQuestions", "Error Rearrange Questions: ${e.message}")
+        }}
 
 }
