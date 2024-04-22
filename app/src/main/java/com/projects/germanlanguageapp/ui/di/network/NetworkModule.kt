@@ -26,9 +26,9 @@ class NetworkModule {
     @Singleton
     fun provideRetrofit(gsonConverterFactory: GsonConverterFactory,httpClient: OkHttpClient):Retrofit
     {
-        //http://deutschapi.runasp.net/api/
+        //http://germanapp-001-site1.jtempurl.com/api/
         return Retrofit.Builder()
-            .baseUrl("http://germanapp-001-site1.jtempurl.com/api/")
+            .baseUrl("http://deutschapi.runasp.net/api/")
             .addConverterFactory(gsonConverterFactory)
             .client(httpClient)
             .build()
