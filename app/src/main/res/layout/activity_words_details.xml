@@ -31,11 +31,42 @@
             android:src="@drawable/listening_speaking_icon"
             android:layout_margin="14dp" />
 
+        <EditText
+            android:id="@+id/entered_word"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toBottomOf="@id/corner_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/speaker"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/rounded_button_record"
+            android:backgroundTint="@color/brown_90"
+            android:textColor="@color/black"
+            android:padding="8dp"/>
+        <ImageView
+            android:id="@+id/speaker"
+            android:layout_width="30dp"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toBottomOf="@id/corner_image"
+            app:layout_constraintStart_toEndOf="@id/entered_word"
+            app:layout_constraintEnd_toStartOf="@id/mic"
+            android:src="@drawable/icon_microphone"
+            android:layout_marginHorizontal="12dp" />
+        <ImageView
+            android:id="@+id/mic"
+            android:layout_width="30dp"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toBottomOf="@id/corner_image"
+            app:layout_constraintStart_toEndOf="@id/speaker"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/icon_mic"
+            android:layout_marginEnd="24dp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/words_recycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/corner_image"
+            app:layout_constraintTop_toBottomOf="@id/entered_word"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:paddingTop="12dp"

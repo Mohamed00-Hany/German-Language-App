@@ -58,5 +58,19 @@ class WordsDetailsActivity: AppCompatActivity() {
                 }
             }
         }
+        binding.speaker.setOnClickListener {
+            val enteredWord:String = binding.enteredWord.text.toString()
+            if (enteredWord.isNotEmpty()) {
+                viewModel.speak(enteredWord)
+            }
+        }
+        binding.mic.setOnClickListener {
+            val enteredWord:String = binding.enteredWord.text.toString()
+            if (enteredWord.isNotEmpty()) {
+                val intent = Intent(this@WordsDetailsActivity, RecordingActivity::class.java)
+                intent.putExtra("TARGET_WORD",enteredWord)
+                startActivity(intent)
+            }
+        }
     }
 }
