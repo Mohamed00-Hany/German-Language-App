@@ -66,4 +66,46 @@ interface WebServices {
 
     @GET("choose/Get")
     suspend fun getChooseQuestions(@Query("levelId") levelId: Int,@Query("lessonId") lessonId: Int):ChooseResponse
+    @GET("choose/Post")
+    suspend fun PostChooseQuestions(@Query("ChooseNameQuestion") ChooseNameQuestion: String,@Query("ChooseNameAnswer") ChooseNameAnswer: String,@Query("ChooseNameAnswerRight") ChooseNameAnswerRight: Int,@Query("levelId") levelId: Int,@Query("lessonId") lessonId: Int)
+    @GET("choose/Put")
+    suspend fun PutChooseQuestions(@Query("ChooseId") ChooseId: Int,@Query("ChooseNameQuestion") ChooseNameQuestion: String,@Query("ChooseNameAnswer") ChooseNameAnswer: String,@Query("ChooseNameAnswerRight") ChooseNameAnswerRight: Int)
+    @GET("choose/Delete")
+    suspend fun DeleteChooseQuestions(@Query("ChooseId") ChooseId: Int)
+
+    @GET("Match/Get")
+    suspend fun getMatchQuestions(@Query("levelId") levelId: Int, @Query("lessonId") lessonId: Int):MatchResponse
+
+    @GET("Match/Post")
+    suspend fun postMatchQuestions(
+        @Query("MatchNameQuestion1") MatchNameQuestion1: String,
+        @Query("MatchNameAnswer1") MatchNameAnswer1: String,
+        @Query("MatchNameQuestion2") MatchNameQuestion2: String,
+        @Query("MatchNameAnswer2") MatchNameAnswer2: String,
+        @Query("MatchNameQuestion3") MatchNameQuestion3: String,
+        @Query("MatchNameAnswer3") MatchNameAnswer3: String,
+        @Query("MatchNameQuestion4") MatchNameQuestion4: String,
+        @Query("MatchNameAnswer4") MatchNameAnswer4: String,
+        @Query("levelId") levelId: Int,
+        @Query("lessonId") lessonId: Int
+    )
+
+    @GET("Match/Put")
+    suspend fun putMatchQuestion(
+        @Query("MatchId") MatchId: Int,
+        @Query("MatchNameQuestion1") MatchNameQuestion1: String,
+        @Query("MatchNameAnswer1") MatchNameAnswer1: String,
+        @Query("MatchNameQuestion2") MatchNameQuestion2: String,
+        @Query("MatchNameAnswer2") MatchNameAnswer2: String,
+        @Query("MatchNameQuestion3") MatchNameQuestion3: String,
+        @Query("MatchNameAnswer3") MatchNameAnswer3: String,
+        @Query("MatchNameQuestion4") MatchNameQuestion4: String,
+        @Query("MatchNameAnswer4") MatchNameAnswer4: String,
+
+    )
+
+    @GET("Match/Delete")
+    suspend fun deleteMatchQuestion(@Query("MatchId") MatchId: Int)
+
+
 }

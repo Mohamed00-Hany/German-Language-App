@@ -1,5 +1,6 @@
 package com.projects.germanlanguageapp.ui.chooseQuestions
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.projects.germanlanguageapp.data.dataSources.remote.apis.WebServices
 import com.projects.germanlanguageapp.domain.models.ChooseItem
@@ -40,5 +41,36 @@ class ChooseQuestionsViewModel @Inject constructor (private val webServices: Web
             correctAnswers?.add(chooseItem?.chooseNameAnswerRight)
         }
     }
+
+    suspend fun PostChooseQuestions(
+        ChooseNameQuestion: String,
+        ChooseNameAnswer: String,
+        ChooseNameAnswerRight: Int,
+        levelId: Int,
+        lessonId: Int
+    ) {
+        try {
+            webServices.PostChooseQuestions(ChooseNameQuestion, ChooseNameAnswer,ChooseNameAnswerRight,levelId, lessonId)
+        } catch (e:Exception) {
+            Log.e("PostChooseQuestions", "Error Choose Questions: ${e.message}")
+        }}
+
+    suspend fun PutChooseQuestions(
+        ChooseId: Int,
+        ChooseNameQuestion: String,
+        ChooseNameAnswer: String,
+        ChooseNameAnswerRight: Int) {
+        try {
+            webServices.PutChooseQuestions(ChooseId, ChooseNameQuestion,ChooseNameAnswer ,ChooseNameAnswerRight,)
+        }catch (e:Exception) {
+            Log.e("PutChooseQuestions", "Error Choose Questions: ${e.message}")
+        }}
+
+    suspend fun DeleteChooseQuestions(ChooseId: Int) {
+        try {
+            webServices.DeleteChooseQuestions(ChooseId)
+        }catch (e:Exception) {
+            Log.e("DeleteChooseQuestions", "Error Choose Questions: ${e.message}")
+        }}
 
 }

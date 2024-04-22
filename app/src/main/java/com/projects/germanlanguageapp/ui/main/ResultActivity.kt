@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.ui.chooseQuestions.ChooseQuestionsActivity
 import com.projects.germanlanguageapp.ui.completeQuestions.CompleteQuestionsActivity
+import com.projects.germanlanguageapp.ui.matchQuestions.MatchActivity
 import com.projects.germanlanguageapp.ui.rearrangeQuestions.RearrangeQuestionsActivity
 
 

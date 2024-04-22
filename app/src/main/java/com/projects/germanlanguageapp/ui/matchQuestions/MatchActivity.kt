@@ -1,78 +1,76 @@
-package com.projects.germanlanguageapp.ui.main
-
+package com.projects.germanlanguageapp.ui.matchQuestions
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import android.widget.ArrayAdapter
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.ActivityMatchBinding
+import com.projects.germanlanguageapp.ui.main.ResultActivity
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+
+@AndroidEntryPoint
 
 class MatchActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMatchBinding
-    private val questions = arrayOf(
-        arrayOf("Guten Morgen", "Guten Tag", "Gute Nacht", "Guten Abend"),
-        arrayOf("Wie geht es dir?", "Was machst du?", "Woher kommst du?", "Wie spät ist es?"),
-        arrayOf("Guten Morgen", "Guten Tag", "Gute Nacht", "Guten Abend")
-    )
-
-    private val options = arrayOf(
-        arrayOf("15:00 Uhr", "9:00 Uhr", "22:00 Uhr", "bevor schlafen"),
-        arrayOf(
-            "Es ist drei Uhr.",
-            "Ich komme aus Deutschland.",
-            "Ich lese ein Buch.",
-            "Mir geht es gut."
-        ),
-        arrayOf("15:00 Uhr", "9:00 Uhr", "22:00 Uhr", "bevor schlafen")
-    )
-    private val correctMatches = arrayOf(
-        mapOf(0 to 1, 1 to 0, 2 to 3, 3 to 2),
-        mapOf(0 to 3, 1 to 2, 2 to 1, 3 to 0),
-        mapOf(0 to 1, 1 to 0, 2 to 3, 3 to 2)
-    )
+    private var levelId = 0
+    private var lessonId = 0
+    private val MatchviewModel: MatchQuestionsViewModel by viewModels()
     private var currentQuestionsIndex = 0
     private var score = 0
-
+    private lateinit var binding: ActivityMatchBinding
+    private lateinit var adapter: ArrayAdapter<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMatchBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        displayQuestion()
+        levelId = intent.getIntExtra("levelId", 0)
+        lessonId = intent.getIntExtra("lessonId", 0)
+        lifecycleScope.launch(Dispatchers.IO) {
+            MatchviewModel.getMatchQuestions(levelId,lessonId)
+        }
+        lifecycleScope.launch(Dispatchers.Main) {
+            MatchviewModel.Matchquestions.collectLatest {
+                if (it?.isNotEmpty() == true) {
+                    displayQuestion()
+                }
+            }
+        }
 
         binding.SubmitButton.setOnClickListener { checkAnswer() }
         binding.nextButton.setOnClickListener { nextQuestion() }
     }
 
     private fun displayQuestion() {
-        if (currentQuestionsIndex < questions.size) {
-            val currentQuestion = questions[currentQuestionsIndex]
-            val currentOptions = options[currentQuestionsIndex]
+        val currentQuestion = MatchviewModel.questions[currentQuestionsIndex]
+        val currentOptions = MatchviewModel.options[currentQuestionsIndex] ?: emptyList<String>()
+        if (currentQuestionsIndex < MatchviewModel.questions.size) {
             resetButtonColors()
-            binding.statement1TextView.text = "1: ${currentQuestion[0]}"
+            binding.statement1TextView.text = "1: ${currentQuestion?.get(0)}"
             binding.statement1TextView.movementMethod= ScrollingMovementMethod.getInstance()
-            binding.statement2TextView.text = "2: ${currentQuestion[1]}"
+            binding.statement2TextView.text = "2: ${currentQuestion?.get(1)}"
             binding.statement2TextView.movementMethod= ScrollingMovementMethod.getInstance()
-            binding.statement3TextView.text = "3: ${currentQuestion[2]}"
+            binding.statement3TextView.text = "3: ${currentQuestion?.get(2)}"
             binding.statement3TextView.movementMethod= ScrollingMovementMethod.getInstance()
-            binding.statement4TextView.text = "4: ${currentQuestion[3]}"
+            binding.statement4TextView.text = "4: ${currentQuestion?.get(3)}"
             binding.statement4TextView.movementMethod= ScrollingMovementMethod.getInstance()
 
 
-            val adapter = ArrayAdapter(this, R.layout.custom_spinner_item, currentOptions)
-
+            adapter = ArrayAdapter(this@MatchActivity, R.layout.custom_spinner_item, currentOptions)
             adapter.setDropDownViewResource(android.R.layout.simple_list_item_checked)
-
             binding.statement1Spinner.adapter = adapter
             binding.statement2Spinner.adapter = adapter
             binding.statement3Spinner.adapter = adapter
             binding.statement4Spinner.adapter = adapter
         }
     }
-
     private fun checkAnswer() {
         val selectedIndices = intArrayOf(
             binding.statement1Spinner.selectedItemPosition,
@@ -80,8 +78,9 @@ class MatchActivity : AppCompatActivity() {
             binding.statement3Spinner.selectedItemPosition,
             binding.statement4Spinner.selectedItemPosition
         )
+        try {
+            val correctMatchesForQuestion = MatchviewModel.correctMatches[currentQuestionsIndex]
 
-        val correctMatchesForQuestion = correctMatches[currentQuestionsIndex]
 
         var isCorrect = true
         for ((index, optionIndex) in selectedIndices.withIndex()) {
@@ -90,7 +89,6 @@ class MatchActivity : AppCompatActivity() {
                 break
             }
         }
-
         if (isCorrect) {
             score++
             binding.statement1TextView.setTextColor(Color.GREEN)
@@ -115,11 +113,15 @@ class MatchActivity : AppCompatActivity() {
         binding.statement3Spinner.isEnabled = false
         binding.statement4Spinner.isEnabled = false
         binding.SubmitButton.isEnabled = false
+        }
+        catch (e:Exception) {
+            Log.e("MatchQuestions", "Error Match Questions: ${e.message}")
+        }
     }
 
 
     private fun nextQuestion() {
-        if (currentQuestionsIndex < questions.size - 1) {
+        if (currentQuestionsIndex < MatchviewModel.questions.size - 1) {
             currentQuestionsIndex++
             displayQuestion()
             binding.statement1Spinner.isEnabled = true
@@ -128,22 +130,22 @@ class MatchActivity : AppCompatActivity() {
             binding.statement4Spinner.isEnabled = true
             binding.SubmitButton.isEnabled = true
         }
-        if (currentQuestionsIndex == questions.size - 1) {
+        if (currentQuestionsIndex == MatchviewModel.questions.size - 1) {
             binding.nextButton.text = getString(R.string.Show_Result)
             binding.nextButton.setOnClickListener {
                 val intent = Intent(this, ResultActivity::class.java)
                 intent.putExtra("SOURCE_CLASS", "MatchActivity")
                 intent.putExtra("SCORE", score)
-                intent.putExtra("NoOfQuestions", questions.size)
+                intent.putExtra("NoOfQuestions", MatchviewModel.questions.size)
+                intent.putExtra("levelId",levelId)
+                intent.putExtra("lessonId",lessonId)
                 startActivity(intent)
                 finish()
             }
         }
     }
-
     private fun resetButtonColors() {
         val colorStateList = ContextCompat.getColorStateList(this, R.color.greeen1)
-
         binding.statement1TextView.setTextColor(colorStateList)
         binding.statement2TextView.setTextColor(colorStateList)
         binding.statement3TextView.setTextColor(colorStateList)

@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.projects.germanlanguageapp.R
+import com.projects.germanlanguageapp.ui.admin.Questions.Choose.ChooseRecyclerView
 import com.projects.germanlanguageapp.ui.admin.Questions.Complete.CompleteRecyclerView
+import com.projects.germanlanguageapp.ui.admin.Questions.Match.MatchRecyclerView
 import com.projects.germanlanguageapp.ui.admin.Questions.Rearrange.RearrangeRecyclerView
 
 class QuestionsActivity : AppCompatActivity() {
@@ -21,8 +23,6 @@ class QuestionsActivity : AppCompatActivity() {
         val matchButton = findViewById<View>(R.id.match_button)
         val completeButton = findViewById<View>(R.id.complete_button)
 
-        chooseButton.setOnClickListener {}
-        matchButton.setOnClickListener {}
 
         rearrangeButton.setOnClickListener {
             val intent = Intent(this, RearrangeRecyclerView::class.java).apply {
@@ -31,7 +31,6 @@ class QuestionsActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-
 
 
         completeButton.setOnClickListener {
@@ -43,7 +42,21 @@ class QuestionsActivity : AppCompatActivity() {
         }
 
 
+        chooseButton.setOnClickListener {
+            val intent = Intent(this, ChooseRecyclerView::class.java).apply {
+                putExtra("levelId", levelId)
+                putExtra("lessonId", lessonId)
+            }
+            startActivity(intent)
+        }
 
 
+        matchButton.setOnClickListener {
+            val intent = Intent(this, MatchRecyclerView::class.java).apply {
+                putExtra("levelId", levelId)
+                putExtra("lessonId", lessonId)
+            }
+            startActivity(intent)
+        }
     }
 }
