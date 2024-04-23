@@ -26,7 +26,6 @@ class ChooseQuestionsViewModel @Inject constructor (private val webServices: Web
         }
         questions.value?.forEach { chooseItem ->
             options.add(chooseItem?.chooseNameAnswer
-                ?.replace("\\s".toRegex(), "")
                 ?.replace("\"".toRegex(), "")
                 ?.replace('('.toString(), "")
                 ?.replace(')'.toString(), "")

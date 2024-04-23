@@ -95,7 +95,6 @@ class ChooseQuestionsActivity : AppCompatActivity() {
     private fun displayQuestion() {
         val question = viewModel.questions.value!![currentQuestionsIndex]?.chooseNameQuestion
         binding.questionText.text = question
-        //binding.questionText.movementMethod = ScrollingMovementMethod.getInstance()
         try {
             binding.op1Button.text = viewModel.options[currentQuestionsIndex]!![0]
             binding.op1Button.isEnabled = true
