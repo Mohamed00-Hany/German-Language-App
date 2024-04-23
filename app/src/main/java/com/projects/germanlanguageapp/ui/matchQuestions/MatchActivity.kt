@@ -69,6 +69,10 @@ class MatchActivity : AppCompatActivity() {
             binding.statement2Spinner.adapter = adapter
             binding.statement3Spinner.adapter = adapter
             binding.statement4Spinner.adapter = adapter
+            binding.statement1Spinner.setSelection(0)
+            binding.statement2Spinner.setSelection(1)
+            binding.statement3Spinner.setSelection(2)
+            binding.statement4Spinner.setSelection(3)
         }
     }
     private fun checkAnswer() {
