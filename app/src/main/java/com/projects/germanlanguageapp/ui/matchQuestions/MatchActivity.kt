@@ -18,11 +18,10 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-
 class MatchActivity : AppCompatActivity() {
     private var levelId = 0
     private var lessonId = 0
-    private val MatchviewModel: MatchQuestionsViewModel by viewModels()
+    private val matchViewModel: MatchQuestionsViewModel by viewModels()
     private var currentQuestionsIndex = 0
     private var score = 0
     private lateinit var binding: ActivityMatchBinding
@@ -34,10 +33,10 @@ class MatchActivity : AppCompatActivity() {
         levelId = intent.getIntExtra("levelId", 0)
         lessonId = intent.getIntExtra("lessonId", 0)
         lifecycleScope.launch(Dispatchers.IO) {
-            MatchviewModel.getMatchQuestions(levelId,lessonId)
+            matchViewModel.getMatchQuestions(levelId,lessonId)
         }
         lifecycleScope.launch(Dispatchers.Main) {
-            MatchviewModel.Matchquestions.collectLatest {
+            matchViewModel.matchQuestions.collectLatest {
                 if (it?.isNotEmpty() == true) {
                     displayQuestion()
                 }
@@ -49,9 +48,9 @@ class MatchActivity : AppCompatActivity() {
     }
 
     private fun displayQuestion() {
-        val currentQuestion = MatchviewModel.questions[currentQuestionsIndex]
-        val currentOptions = MatchviewModel.options[currentQuestionsIndex] ?: emptyList<String>()
-        if (currentQuestionsIndex < MatchviewModel.questions.size) {
+        val currentQuestion = matchViewModel.questions[currentQuestionsIndex]
+        val currentOptions = matchViewModel.options[currentQuestionsIndex] ?: emptyList<String>()
+        if (currentQuestionsIndex < matchViewModel.questions.size) {
             resetButtonColors()
             binding.statement1TextView.text = "1: ${currentQuestion?.get(0)}"
             binding.statement1TextView.movementMethod= ScrollingMovementMethod.getInstance()
@@ -79,7 +78,7 @@ class MatchActivity : AppCompatActivity() {
             binding.statement4Spinner.selectedItemPosition
         )
         try {
-            val correctMatchesForQuestion = MatchviewModel.correctMatches[currentQuestionsIndex]
+            val correctMatchesForQuestion = matchViewModel.correctMatches[currentQuestionsIndex]
 
 
         var isCorrect = true
@@ -121,7 +120,7 @@ class MatchActivity : AppCompatActivity() {
 
 
     private fun nextQuestion() {
-        if (currentQuestionsIndex < MatchviewModel.questions.size - 1) {
+        if (currentQuestionsIndex < matchViewModel.questions.size - 1) {
             currentQuestionsIndex++
             displayQuestion()
             binding.statement1Spinner.isEnabled = true
@@ -130,13 +129,13 @@ class MatchActivity : AppCompatActivity() {
             binding.statement4Spinner.isEnabled = true
             binding.SubmitButton.isEnabled = true
         }
-        if (currentQuestionsIndex == MatchviewModel.questions.size - 1) {
+        if (currentQuestionsIndex == matchViewModel.questions.size - 1) {
             binding.nextButton.text = getString(R.string.Show_Result)
             binding.nextButton.setOnClickListener {
                 val intent = Intent(this, ResultActivity::class.java)
                 intent.putExtra("SOURCE_CLASS", "MatchActivity")
                 intent.putExtra("SCORE", score)
-                intent.putExtra("NoOfQuestions", MatchviewModel.questions.size)
+                intent.putExtra("NoOfQuestions", matchViewModel.questions.size)
                 intent.putExtra("levelId",levelId)
                 intent.putExtra("lessonId",lessonId)
                 startActivity(intent)
@@ -145,7 +144,7 @@ class MatchActivity : AppCompatActivity() {
         }
     }
     private fun resetButtonColors() {
-        val colorStateList = ContextCompat.getColorStateList(this, R.color.greeen1)
+        val colorStateList = ContextCompat.getColorStateList(this, R.color.black)
         binding.statement1TextView.setTextColor(colorStateList)
         binding.statement2TextView.setTextColor(colorStateList)
         binding.statement3TextView.setTextColor(colorStateList)

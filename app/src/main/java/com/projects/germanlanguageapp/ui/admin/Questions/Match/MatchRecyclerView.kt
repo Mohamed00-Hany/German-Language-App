@@ -45,7 +45,7 @@ class MatchRecyclerView : AppCompatActivity() {
             matchviewModel.getMatchQuestions(levelId, lessonId)
         }
         lifecycleScope.launch(Dispatchers.Main) {
-            matchviewModel.Matchquestions.collectLatest { questions ->
+            matchviewModel.matchQuestions.collectLatest { questions ->
                 questions?.let {
                     updateQuestionsAdapter(it)
                 }
@@ -124,7 +124,7 @@ class MatchRecyclerView : AppCompatActivity() {
             matchviewModel.getMatchQuestions(levelId, lessonId)
         }
         lifecycleScope.launch(Dispatchers.Main) {
-            matchviewModel.Matchquestions.collectLatest { questions ->
+            matchviewModel.matchQuestions.collectLatest { questions ->
                 questions?.let {
                     updateQuestionsAdapter(it)
                 }

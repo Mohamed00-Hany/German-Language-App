@@ -9,18 +9,18 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MatchQuestionsViewModel @Inject constructor (private val webServices: WebServices) : ViewModel() {
-    val Matchquestions = MutableStateFlow<List<MatchItem?>?>(null)
+    val matchQuestions = MutableStateFlow<List<MatchItem?>?>(null)
     val options: MutableList<List<String?>?> = mutableListOf()
     val questions: MutableList<List<String?>?> = mutableListOf()
     val correctMatches: MutableList<MutableMap<Int, Int>> = mutableListOf()
     suspend fun getMatchQuestions(levelId: Int, lessonId: Int) {
-        Matchquestions.value = try {
+        matchQuestions.value = try {
             webServices.getMatchQuestions(levelId, lessonId).data
         } catch (e: Exception) {
             listOf()
         }
 
-        Matchquestions.value?.forEach { matchItem ->
+        matchQuestions.value?.forEach { matchItem ->
             val randomizedOptions = mutableListOf<String?>()
             val correctMatch = mutableMapOf<Int, Int>()
             val optionIndices = mutableListOf(0, 1, 2, 3).shuffled()
