@@ -7,10 +7,10 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.auth.FirebaseAuth
+import com.google.mlkit.nl.translate.Translator
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.ActivitySplashBinding
 import com.projects.germanlanguageapp.ui.levels.LevelsActivity
-import com.projects.germanlanguageapp.ui.login.LoginActivity
 import com.projects.germanlanguageapp.ui.studentoradmin.StudentOrAdminActivity
 
 
@@ -18,13 +18,14 @@ class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivitySplashBinding
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-
+    lateinit var translator: Translator
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= DataBindingUtil.setContentView(this,R.layout.activity_splash)
         Handler(Looper.getMainLooper()).postDelayed({
             startStudentAdminActivity()
         },3000)
+        translator.downloadModelIfNeeded()
     }
 
     private fun startStudentAdminActivity()

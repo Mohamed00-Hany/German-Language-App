@@ -95,6 +95,8 @@
             app:layout_constraintBottom_toTopOf="@id/SubmitButton"
             android:background="@drawable/rounded_button_background"
             android:backgroundTint="@color/lead1"
+            android:gravity="center"
+
             />
 
         <androidx.appcompat.widget.AppCompatButton
