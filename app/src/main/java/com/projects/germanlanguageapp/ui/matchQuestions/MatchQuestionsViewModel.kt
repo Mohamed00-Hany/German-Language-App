@@ -19,7 +19,9 @@ class MatchQuestionsViewModel @Inject constructor (private val webServices: WebS
         } catch (e: Exception) {
             listOf()
         }
+    }
 
+    fun getQuestionsAndAnswers() {
         matchQuestions.value?.forEach { matchItem ->
             val randomizedOptions = mutableListOf<String?>()
             val correctMatch = mutableMapOf<Int, Int>()

@@ -38,6 +38,7 @@ class MatchActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.Main) {
             matchViewModel.matchQuestions.collectLatest {
                 if (it?.isNotEmpty() == true) {
+                    matchViewModel.getQuestionsAndAnswers()
                     displayQuestion()
                 }
             }
@@ -48,9 +49,9 @@ class MatchActivity : AppCompatActivity() {
     }
 
     private fun displayQuestion() {
-        val currentQuestion = matchViewModel.questions[currentQuestionsIndex]
-        val currentOptions = matchViewModel.options[currentQuestionsIndex] ?: emptyList<String>()
         if (currentQuestionsIndex < matchViewModel.questions.size) {
+            val currentQuestion = matchViewModel.questions[currentQuestionsIndex] ?: emptyList<String>()
+            val currentOptions = matchViewModel.options[currentQuestionsIndex] ?: emptyList<String>()
             resetButtonColors()
             binding.statement1TextView.text = "1: ${currentQuestion?.get(0)}"
             binding.statement1TextView.movementMethod= ScrollingMovementMethod.getInstance()
