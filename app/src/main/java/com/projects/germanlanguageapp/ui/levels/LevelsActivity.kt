@@ -1,6 +1,7 @@
 package com.projects.germanlanguageapp.ui.levels
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.ActivityLevelsBinding
 import com.projects.germanlanguageapp.ui.lessons.LessonsActivity
+import com.projects.germanlanguageapp.ui.studentoradmin.StudentOrAdminActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -39,6 +41,15 @@ class LevelsActivity: AppCompatActivity() {
                 intent.putExtra("levelId",levelId)
                 startActivity(intent)
             }
+        }
+        binding.icLogout.setOnClickListener {
+            val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+            val myEdit = prefs.edit()
+            myEdit.putBoolean("isUserLoggedIn", false)
+            myEdit.apply()
+            val intent=Intent(this@LevelsActivity,StudentOrAdminActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }
