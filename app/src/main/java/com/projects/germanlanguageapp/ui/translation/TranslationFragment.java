@@ -36,8 +36,7 @@ public class TranslationFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        TranslationViewModel translationpageViewModel =
-                new ViewModelProvider(this).get(TranslationViewModel.class);
+
 
         binding = FragmentTranslationBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

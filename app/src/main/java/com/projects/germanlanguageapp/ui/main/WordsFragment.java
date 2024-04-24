@@ -21,8 +21,7 @@ public class WordsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        WordsViewModel wordspageViewModel =
-                new ViewModelProvider(this).get(WordsViewModel.class);
+
         levelId = requireActivity().getIntent().getIntExtra("levelId",0) ;
         lessonId = requireActivity().getIntent().getIntExtra("lessonId",0) ;
         binding = FragmentWordsBinding.inflate(inflater, container, false);

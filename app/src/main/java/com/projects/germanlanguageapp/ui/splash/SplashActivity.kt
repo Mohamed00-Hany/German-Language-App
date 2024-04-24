@@ -8,7 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.FirebaseAuth
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.Translator
+import com.google.mlkit.nl.translate.TranslatorOptions
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.ActivitySplashBinding
 import com.projects.germanlanguageapp.domain.useCases.GetModelData
@@ -33,6 +36,20 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             startStudentAdminActivity()
         },3000)
+        lateinit var translator: Translator
+        lateinit var translator1: Translator
+        val options = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.ARABIC)
+            .setTargetLanguage(TranslateLanguage.GERMAN)
+            .build()
+        val options1 = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.GERMAN)
+            .setTargetLanguage(TranslateLanguage.ARABIC)
+            .build()
+        translator1 = Translation.getClient(options)
+        translator = Translation.getClient(options1)
+        translator.downloadModelIfNeeded()
+        translator1.downloadModelIfNeeded()
         lifecycleScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, exception ->
         }) {
             getModelData.invoke(byteArrayOf())

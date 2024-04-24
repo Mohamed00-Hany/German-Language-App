@@ -58,8 +58,7 @@ class RearrangeQuestionsActivity : AppCompatActivity() {
     }
 
     private fun displayQuestion() {
-        val questionNumber = currentQuestionsIndex + 1
-        val questionText = "$questionNumber: ${viewModel.questions.value!![currentQuestionsIndex]?.rearrangeNameQuestion}"
+        val questionText = "${viewModel.questions.value!![currentQuestionsIndex]?.rearrangeNameQuestion}"
         binding.rearrangeQuestionText.text = questionText
         binding.rearrangeQuestionText.movementMethod = ScrollingMovementMethod.getInstance()
         binding.answerText.text.clear()

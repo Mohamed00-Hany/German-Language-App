@@ -28,9 +28,7 @@ class QuestionsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        val homeViewModel = ViewModelProvider(this).get(
-            QuestionsViewModel::class.java
-        )
+
         levelId = (requireActivity() as MainActivity).intent.getIntExtra("levelId", 0)
         lessonId = (requireActivity() as MainActivity).intent.getIntExtra("lessonId", 0)
         binding = FragmentQuistionsBinding.inflate(inflater, container, false)

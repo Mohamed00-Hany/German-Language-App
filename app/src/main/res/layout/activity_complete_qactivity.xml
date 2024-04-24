@@ -43,6 +43,8 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/Note"
+            android:text="?"
+
             />
 
         <TextView
