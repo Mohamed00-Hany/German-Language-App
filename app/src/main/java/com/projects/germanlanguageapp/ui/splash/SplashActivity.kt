@@ -6,26 +6,37 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.mlkit.nl.translate.Translator
 import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.ActivitySplashBinding
+import com.projects.germanlanguageapp.domain.useCases.GetModelData
 import com.projects.germanlanguageapp.ui.levels.LevelsActivity
 import com.projects.germanlanguageapp.ui.studentoradmin.StudentOrAdminActivity
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivitySplashBinding
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    lateinit var translator: Translator
+    @Inject
+    lateinit var getModelData: GetModelData
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= DataBindingUtil.setContentView(this,R.layout.activity_splash)
         Handler(Looper.getMainLooper()).postDelayed({
             startStudentAdminActivity()
         },3000)
-        translator.downloadModelIfNeeded()
+        lifecycleScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, exception ->
+        }) {
+            getModelData.invoke(byteArrayOf())
+        }
     }
 
     private fun startStudentAdminActivity()
