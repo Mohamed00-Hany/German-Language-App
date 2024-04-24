@@ -1,5 +1,6 @@
 package com.projects.germanlanguageapp.ui.admin.levels
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -18,6 +19,7 @@ import com.projects.germanlanguageapp.databinding.ActivityAdminLevelBinding
 import com.projects.germanlanguageapp.ui.admin.lessons.LessonsAdminActivity
 import com.projects.germanlanguageapp.ui.levels.LevelsAdapter
 import com.projects.germanlanguageapp.ui.levels.LevelsViewModel
+import com.projects.germanlanguageapp.ui.studentoradmin.StudentOrAdminActivity
 import kotlinx.coroutines.launch
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
@@ -54,6 +56,15 @@ class AdminLevel : AppCompatActivity() {
         val addButton: ImageButton = findViewById(R.id.add_button)
         addButton.setOnClickListener {
             showAddLevelDialog()
+        }
+        binding.icLogout.setOnClickListener {
+            val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+            val myEdit = prefs.edit()
+            myEdit.putBoolean("isUserLoggedIn", false)
+            myEdit.apply()
+            val intent=Intent(this@AdminLevel, StudentOrAdminActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
