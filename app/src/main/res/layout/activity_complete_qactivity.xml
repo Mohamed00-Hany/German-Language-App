@@ -39,13 +39,11 @@
             android:id="@+id/complete_Question_Text"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:textColor="@color/greeen1"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/Note"
-            android:text="?"
-
-            />
+            android:text="?" />
 
         <TextView
             app:layout_constraintRight_toRightOf="parent"

@@ -50,9 +50,10 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textAlignment="center"
-                android:textColor="@color/greeen1"
+                android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:text="?"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/op1_Button"
