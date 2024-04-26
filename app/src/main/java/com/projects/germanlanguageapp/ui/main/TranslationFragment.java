@@ -1,4 +1,4 @@
-package com.projects.germanlanguageapp.ui.translation;
+package com.projects.germanlanguageapp.ui.main;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
