@@ -30,7 +30,7 @@ class NetworkModule {
         //http://deutschapi.runasp.net/api/
         //http://educationallearning.runasp.net/api/
         return Retrofit.Builder()
-            .baseUrl("http://germanapp-001-site1.jtempurl.com/api/")
+            .baseUrl("http://deutschapi.runasp.net/api/")
             .addConverterFactory(gsonConverterFactory)
             .client(httpClient)
             .build()

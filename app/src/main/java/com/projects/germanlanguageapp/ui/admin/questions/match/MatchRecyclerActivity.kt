@@ -1,4 +1,4 @@
-package com.projects.germanlanguageapp.ui.admin.Questions.Match
+package com.projects.germanlanguageapp.ui.admin.questions.match
 import QuestionsAdapter
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 @AndroidEntryPoint
-class MatchRecyclerView : AppCompatActivity() {
+class MatchRecyclerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionsRecyclerViewBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var questionsAdapter: QuestionsAdapter

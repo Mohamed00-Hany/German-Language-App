@@ -1,4 +1,4 @@
-package com.projects.germanlanguageapp.ui.admin.Words
+package com.projects.germanlanguageapp.ui.admin.words
 
 import QuestionsAdapter
 import android.content.Intent
@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class WordsRecyclerViewActivity : AppCompatActivity() {
+class WordsRecyclerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWordsRecyclerViewBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var questionsAdapter: QuestionsAdapter

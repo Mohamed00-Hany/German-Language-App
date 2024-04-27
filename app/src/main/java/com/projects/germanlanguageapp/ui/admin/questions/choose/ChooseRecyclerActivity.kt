@@ -1,4 +1,4 @@
-package com.projects.germanlanguageapp.ui.admin.Questions.Choose
+package com.projects.germanlanguageapp.ui.admin.questions.choose
 
 import QuestionsAdapter
 import android.content.Intent
@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ChooseRecyclerView : AppCompatActivity() {
+class ChooseRecyclerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionsRecyclerViewBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var questionsAdapter: QuestionsAdapter

@@ -14,7 +14,7 @@ import com.projects.germanlanguageapp.R
 import com.projects.germanlanguageapp.databinding.ActivityLoginBinding
 import com.projects.germanlanguageapp.ui.GlobalState
 import com.projects.germanlanguageapp.ui.OnDialogClickListener
-import com.projects.germanlanguageapp.ui.admin.levels.AdminLevel
+import com.projects.germanlanguageapp.ui.admin.levels.LevelsAdminActivity
 import com.projects.germanlanguageapp.ui.levels.LevelsActivity
 import kotlinx.coroutines.launch
 
@@ -75,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
         val prefs = getSharedPreferences("MySharedPref", MODE_PRIVATE)
         val isAdmin = prefs.getBoolean("isAdmin", false)
         if (isAdmin) {
-            startActivity(Intent(this, AdminLevel::class.java))
+            startActivity(Intent(this, LevelsAdminActivity::class.java))
             finishAffinity()
         } else {
             startActivity(Intent(this, LevelsActivity::class.java))

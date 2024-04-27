@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.projects.germanlanguageapp.R
-import com.projects.germanlanguageapp.ui.admin.Words.WordsRecyclerViewActivity
+import com.projects.germanlanguageapp.ui.admin.words.WordsRecyclerActivity
 
 class WordsActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -26,7 +26,7 @@ class WordsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View) {
-        val intent = Intent(this, WordsRecyclerViewActivity::class.java)
+        val intent = Intent(this, WordsRecyclerActivity::class.java)
         intent.putExtra("levelId", levelId)
         intent.putExtra("lessonId", lessonId)
 

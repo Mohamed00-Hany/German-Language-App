@@ -1,4 +1,4 @@
-package com.projects.germanlanguageapp.ui.admin.Words
+package com.projects.germanlanguageapp.ui.admin.words
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View

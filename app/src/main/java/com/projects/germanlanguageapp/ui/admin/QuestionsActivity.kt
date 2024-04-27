@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.projects.germanlanguageapp.R
-import com.projects.germanlanguageapp.ui.admin.Questions.Choose.ChooseRecyclerView
-import com.projects.germanlanguageapp.ui.admin.Questions.Complete.CompleteRecyclerView
-import com.projects.germanlanguageapp.ui.admin.Questions.Match.MatchRecyclerView
-import com.projects.germanlanguageapp.ui.admin.Questions.Rearrange.RearrangeRecyclerView
+import com.projects.germanlanguageapp.ui.admin.questions.choose.ChooseRecyclerActivity
+import com.projects.germanlanguageapp.ui.admin.questions.complete.CompleteRecyclerActivity
+import com.projects.germanlanguageapp.ui.admin.questions.match.MatchRecyclerActivity
+import com.projects.germanlanguageapp.ui.admin.questions.rearrange.RearrangeRecyclerActivity
 
 class QuestionsActivity : AppCompatActivity() {
     private var levelId: Int = 0
@@ -25,7 +25,7 @@ class QuestionsActivity : AppCompatActivity() {
 
 
         rearrangeButton.setOnClickListener {
-            val intent = Intent(this, RearrangeRecyclerView::class.java).apply {
+            val intent = Intent(this, RearrangeRecyclerActivity::class.java).apply {
                 putExtra("levelId", levelId)
                 putExtra("lessonId", lessonId)
             }
@@ -34,7 +34,7 @@ class QuestionsActivity : AppCompatActivity() {
 
 
         completeButton.setOnClickListener {
-            val intent = Intent(this, CompleteRecyclerView::class.java).apply {
+            val intent = Intent(this, CompleteRecyclerActivity::class.java).apply {
                 putExtra("levelId", levelId)
                 putExtra("lessonId", lessonId)
             }
@@ -43,7 +43,7 @@ class QuestionsActivity : AppCompatActivity() {
 
 
         chooseButton.setOnClickListener {
-            val intent = Intent(this, ChooseRecyclerView::class.java).apply {
+            val intent = Intent(this, ChooseRecyclerActivity::class.java).apply {
                 putExtra("levelId", levelId)
                 putExtra("lessonId", lessonId)
             }
@@ -52,7 +52,7 @@ class QuestionsActivity : AppCompatActivity() {
 
 
         matchButton.setOnClickListener {
-            val intent = Intent(this, MatchRecyclerView::class.java).apply {
+            val intent = Intent(this, MatchRecyclerActivity::class.java).apply {
                 putExtra("levelId", levelId)
                 putExtra("lessonId", lessonId)
             }

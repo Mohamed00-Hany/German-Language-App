@@ -23,7 +23,7 @@ import com.projects.germanlanguageapp.ui.studentoradmin.StudentOrAdminActivity
 import kotlinx.coroutines.launch
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
-class AdminLevel : AppCompatActivity() {
+class LevelsAdminActivity : AppCompatActivity() {
     private val viewModel: LevelsViewModel by viewModels()
     private lateinit var binding: ActivityAdminLevelBinding
     private lateinit var levelsAdapter: LevelsAdapter
@@ -48,7 +48,7 @@ class AdminLevel : AppCompatActivity() {
 
         levelsAdapter.onLevelClickListener=object : LevelsAdapter.OnLevelClick {
             override fun onClick(position: Int, levelId: Int?) {
-                val intent=Intent(this@AdminLevel, LessonsAdminActivity::class.java)
+                val intent=Intent(this@LevelsAdminActivity, LessonsAdminActivity::class.java)
                 intent.putExtra("levelId",levelId)
                 startActivity(intent)
             }
@@ -62,7 +62,7 @@ class AdminLevel : AppCompatActivity() {
             val myEdit = prefs.edit()
             myEdit.putBoolean("isUserLoggedIn", false)
             myEdit.apply()
-            val intent=Intent(this@AdminLevel, StudentOrAdminActivity::class.java)
+            val intent=Intent(this@LevelsAdminActivity, StudentOrAdminActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -87,7 +87,7 @@ class AdminLevel : AppCompatActivity() {
                         levelsRecycler.scrollToPosition(levelsAdapter.itemCount - 1)
                     }, 500)   }}
                 else {
-                Toast.makeText(this@AdminLevel, "Please enter a level name", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LevelsAdminActivity, "Please enter a level name", Toast.LENGTH_SHORT).show()
             }
             dialogInterface.dismiss()
         }

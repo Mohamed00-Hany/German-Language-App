@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.admin.Questions.Match.MatchRecyclerView"
+            android:name=".ui.admin.questions.match.MatchRecyclerActivity"
             android:exported="false" />
         <activity
             android:name=".ui.splash.SplashActivity"
@@ -87,7 +87,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.admin.levels.AdminLevel"
+            android:name=".ui.admin.levels.LevelsAdminActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -107,35 +107,35 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.admin.Words.WordsAdminActivity"
+            android:name=".ui.admin.words.WordsAdminActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.admin.Questions.CompleteRearrangeAdminActivity"
+            android:name=".ui.admin.questions.CompleteRearrangeAdminActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.admin.Questions.Match.MatchAdminActivity"
+            android:name=".ui.admin.questions.match.MatchAdminActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.admin.Questions.Choose.ChooseAdminActivity"
+            android:name=".ui.admin.questions.choose.ChooseAdminActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.admin.Words.WordsRecyclerViewActivity"
+            android:name=".ui.admin.words.WordsRecyclerActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.admin.Questions.Rearrange.RearrangeRecyclerView"
+            android:name=".ui.admin.questions.rearrange.RearrangeRecyclerActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.admin.Questions.Complete.CompleteRecyclerView"
+            android:name=".ui.admin.questions.complete.CompleteRecyclerActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.admin.Questions.Choose.ChooseRecyclerView"
+            android:name=".ui.admin.questions.choose.ChooseRecyclerActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
     </application>

@@ -1,4 +1,4 @@
-package com.projects.germanlanguageapp.ui.admin.Questions
+package com.projects.germanlanguageapp.ui.admin.questions
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
