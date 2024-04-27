@@ -37,20 +37,23 @@ class SplashActivity : AppCompatActivity() {
         }) {
             getModelData.invoke(byteArrayOf())
         }
-        lateinit var translator: Translator
-        lateinit var translator1: Translator
-        val options = TranslatorOptions.Builder()
-            .setSourceLanguage(TranslateLanguage.ARABIC)
-            .setTargetLanguage(TranslateLanguage.GERMAN)
-            .build()
-        val options1 = TranslatorOptions.Builder()
-            .setSourceLanguage(TranslateLanguage.GERMAN)
-            .setTargetLanguage(TranslateLanguage.ARABIC)
-            .build()
-        translator1 = Translation.getClient(options)
-        translator = Translation.getClient(options1)
-        translator.downloadModelIfNeeded()
-        translator1.downloadModelIfNeeded()
+        lifecycleScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, exception ->
+        }) {
+            lateinit var translator: Translator
+            lateinit var translator1: Translator
+            val options = TranslatorOptions.Builder()
+                .setSourceLanguage(TranslateLanguage.ARABIC)
+                .setTargetLanguage(TranslateLanguage.GERMAN)
+                .build()
+            val options1 = TranslatorOptions.Builder()
+                .setSourceLanguage(TranslateLanguage.GERMAN)
+                .setTargetLanguage(TranslateLanguage.ARABIC)
+                .build()
+            translator1 = Translation.getClient(options)
+            translator = Translation.getClient(options1)
+            translator.downloadModelIfNeeded()
+            translator1.downloadModelIfNeeded()
+        }
     }
 
     private fun startStudentAdminActivity()
