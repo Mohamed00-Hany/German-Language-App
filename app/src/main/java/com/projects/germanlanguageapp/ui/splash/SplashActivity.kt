@@ -2,8 +2,6 @@ package com.projects.germanlanguageapp.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
@@ -18,9 +16,7 @@ import com.projects.germanlanguageapp.domain.useCases.GetModelData
 import com.projects.germanlanguageapp.ui.levels.LevelsActivity
 import com.projects.germanlanguageapp.ui.studentoradmin.StudentOrAdminActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -33,9 +29,10 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= DataBindingUtil.setContentView(this,R.layout.activity_splash)
-        Handler(Looper.getMainLooper()).postDelayed({
+        lifecycleScope.launch(Dispatchers.Main) {
+            delay(3000)
             startStudentAdminActivity()
-        },3000)
+        }
         lateinit var translator: Translator
         lateinit var translator1: Translator
         val options = TranslatorOptions.Builder()
