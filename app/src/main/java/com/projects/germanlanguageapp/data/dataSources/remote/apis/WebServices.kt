@@ -33,7 +33,7 @@ interface WebServices {
     @GET("verb/Post")
     suspend fun Postverbs(@Query("VerbName") VerbName: String,@Query("VerbTName") VerbTName: String,@Query("levelId") levelId: Int,@Query("lessonId") lessonId: Int)
     @GET("verb/Put")
-    suspend fun Putverbs(@Query("aVerbId") VerbId: Int,@Query("VerbName") VerbName: String,@Query("VerbTName") VerbTName: String)
+    suspend fun Putverbs(@Query("VerbId") VerbId: Int,@Query("VerbName") VerbName: String,@Query("VerbTName") VerbTName: String)
     @GET("verb/Delete")
     suspend fun Deleteverbs(@Query("VerbId") VerbId: Int)
 
