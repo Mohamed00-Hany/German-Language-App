@@ -33,6 +33,10 @@ class SplashActivity : AppCompatActivity() {
             delay(3000)
             startStudentAdminActivity()
         }
+        lifecycleScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, exception ->
+        }) {
+            getModelData.invoke(byteArrayOf())
+        }
         lateinit var translator: Translator
         lateinit var translator1: Translator
         val options = TranslatorOptions.Builder()
@@ -47,10 +51,6 @@ class SplashActivity : AppCompatActivity() {
         translator = Translation.getClient(options1)
         translator.downloadModelIfNeeded()
         translator1.downloadModelIfNeeded()
-        lifecycleScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, exception ->
-        }) {
-            getModelData.invoke(byteArrayOf())
-        }
     }
 
     private fun startStudentAdminActivity()
