@@ -102,11 +102,9 @@ class RecordingActivity : AppCompatActivity() {
         }) {
             val result = viewModel.getModelAiData(data)
                 .replace("\\s".toRegex(), "")
-                .replace(".".toRegex(), "")
                 .lowercase(Locale.ROOT)
             withContext(Dispatchers.Main) {
-                if (result == targetWord.replace("\\s".toRegex(), "")
-                        .replace(".".toRegex(), "").lowercase(Locale.ROOT)) {
+                if (result == targetWord.replace("\\s".toRegex(), "").lowercase(Locale.ROOT)) {
                     binding.resultImage.setImageResource(R.drawable.result_image)
                     binding.resultImage.visibility = View.VISIBLE
                     binding.buttonStartRecording.visibility = View.GONE
