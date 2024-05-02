@@ -53,7 +53,7 @@ class ChooseAdminActivity : AppCompatActivity() {
         } else {
                     Toast.makeText(
                         this@ChooseAdminActivity,
-                        "Please fill three fields",
+                        "Bitte füllen Sie drei Felder aus",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -81,7 +81,7 @@ class ChooseAdminActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this@ChooseAdminActivity,
-                        "Please fill three fields",
+                        "Bitte füllen Sie drei Felder aus",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

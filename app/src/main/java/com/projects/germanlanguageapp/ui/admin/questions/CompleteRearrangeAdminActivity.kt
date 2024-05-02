@@ -65,7 +65,7 @@ class CompleteRearrangeAdminActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this@CompleteRearrangeAdminActivity,
-                        "Please fill both fields",
+                        "Bitte füllen Sie beide Felder aus",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -95,7 +95,7 @@ class CompleteRearrangeAdminActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this@CompleteRearrangeAdminActivity,
-                        "Please fill both fields",
+                        "Bitte füllen Sie beide Felder aus",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

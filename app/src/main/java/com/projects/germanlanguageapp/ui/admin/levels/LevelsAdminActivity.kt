@@ -87,7 +87,7 @@ class LevelsAdminActivity : AppCompatActivity() {
                         levelsRecycler.scrollToPosition(levelsAdapter.itemCount - 1)
                     }, 500)   }}
                 else {
-                Toast.makeText(this@LevelsAdminActivity, "Please enter a level name", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LevelsAdminActivity, "Bitte geben Sie einen Levelnamen ein", Toast.LENGTH_SHORT).show()
             }
             dialogInterface.dismiss()
         }

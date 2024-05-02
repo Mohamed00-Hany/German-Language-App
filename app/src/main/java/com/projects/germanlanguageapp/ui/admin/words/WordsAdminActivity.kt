@@ -46,7 +46,7 @@ class WordsAdminActivity : AppCompatActivity() {
                         finish()
                     }
                 } else {
-                    Toast.makeText(this@WordsAdminActivity, "Please fill both fields", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@WordsAdminActivity, "Bitte füllen Sie beide Felder aus", Toast.LENGTH_SHORT).show()
                 }
             }
         }else if(buttonClicked == "Edit"){
@@ -65,7 +65,7 @@ class WordsAdminActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this@WordsAdminActivity,
-                        "Please fill both fields",
+                        "Bitte füllen Sie beide Felder aus",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

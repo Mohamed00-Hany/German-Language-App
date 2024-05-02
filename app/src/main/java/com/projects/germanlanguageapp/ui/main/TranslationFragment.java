@@ -53,12 +53,12 @@ public class TranslationFragment extends Fragment {
             public void onClick(View v) {
                 String sourceText = edittext_1.getText().toString();
                 if (TextUtils.isEmpty(sourceText)) {
-                    Toast.makeText(getContext(), "No text found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Kein Text gefunden", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 ProgressDialog progressDialog = new ProgressDialog(getContext());
-                progressDialog.setMessage("Downloading the translation model...");
+                progressDialog.setMessage("Das Übersetzungsmodell wird heruntergeladen...");
                 progressDialog.setCancelable(false);
                 progressDialog.show();
 
@@ -87,7 +87,7 @@ public class TranslationFragment extends Fragment {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         progressDialog.dismiss();
-                        Toast.makeText(getContext(), "Failed to download the translation model.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Das Übersetzungsmodell konnte nicht heruntergeladen werden.", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

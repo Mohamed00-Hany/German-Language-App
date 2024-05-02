@@ -76,7 +76,7 @@ class MatchAdminActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this@MatchAdminActivity,
-                        "Please fill all fields",
+                        "Bitte alle Felder ausfüllen",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -123,7 +123,7 @@ class MatchAdminActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this@MatchAdminActivity,
-                        "Please fill all fields",
+                        "Bitte alle Felder ausfüllen",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
