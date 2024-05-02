@@ -44,20 +44,20 @@ class LoginViewModel : ViewModel() {
 
         if (email.value.isNullOrBlank()) {
             isValid = false
-            emailError.value="Please enter your email"
+            emailError.value="Bitte geben Sie ihre E-Mail-Adresse ein"
         } else if (email.value?.isMatch() != true) {
             isValid = false
-            emailError.value="The email address is badly formatted"
+            emailError.value="Die E-Mail-Adresse ist falsch formatiert"
         } else {
             emailError.value=null
         }
 
         if (password.value.isNullOrBlank()) {
             isValid = false
-            passwordError.value="Please enter password"
+            passwordError.value="Bitte Passwort eingeben"
         } else if ((password.value?.length ?: 0) < 6) {
             isValid = false
-            passwordError.value="The password should be at least 6 characters"
+            passwordError.value="Das Passwort sollte mindestens 6 Zeichen lang sein"
         } else {
             passwordError.value=null
         }

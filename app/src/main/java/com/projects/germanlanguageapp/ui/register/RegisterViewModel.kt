@@ -43,37 +43,37 @@ class RegisterViewModel : ViewModel() {
 
         if (userName.value.isNullOrBlank()) {
             isValid = false
-            userNameError.value="Please enter your name"
+            userNameError.value="Bitte geben Sie Ihren Namen ein"
         } else {
             userNameError.value=null
         }
 
         if (email.value.isNullOrBlank()) {
             isValid = false
-            emailError.value="Please enter your email"
+            emailError.value="Bitte geben Sie ihre E-Mail-Adresse ein"
         } else if (email.value?.isMatch() != true) {
             isValid = false
-            emailError.value="The email address is badly formatted"
+            emailError.value="Die E-Mail-Adresse ist falsch formatiert"
         } else {
             emailError.value=null
         }
 
         if (password.value.isNullOrBlank()) {
             isValid = false
-            passwordError.value="Please enter password"
+            passwordError.value="Bitte Passwort eingeben"
         } else if ((password.value?.length ?: 0) < 6) {
             isValid = false
-            passwordError.value="The password should be at least 6 characters"
+            passwordError.value="Das Passwort sollte mindestens 6 Zeichen lang sein"
         } else {
             passwordError.value=null
         }
 
         if (passwordConfirmation.value.isNullOrBlank()) {
             isValid = false
-            passwordConfirmationError.value="Please re-enter password"
+            passwordConfirmationError.value="Bitte geben Sie das Passwort erneut ein"
         } else if (!passwordConfirmation.value.equals(password.value)) {
             isValid = false
-            passwordConfirmationError.value="Doesn't match"
+            passwordConfirmationError.value="Passt nicht"
         } else {
             passwordConfirmationError.value=null
         }
