@@ -1,5 +1,6 @@
 package com.projects.germanlanguageapp.ui.admin.levels
 import android.app.ProgressDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -66,18 +67,40 @@ class LevelsAdminActivity : AppCompatActivity() {
             showAddLevelDialog()
         }
         binding.icLogout.setOnClickListener {
-            lifecycleScope.launch(Dispatchers.Main) {
-                showLoading("Wird geladen...")
-                val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
-                val myEdit = prefs.edit()
-                myEdit.putBoolean("isUserLoggedIn", false)
-                myEdit.apply()
-                delay(500)
-                hideLoading()
-                val intent=Intent(this@LevelsAdminActivity, StudentOrAdminActivity::class.java)
-                startActivity(intent)
-                finish()
+            showLogoutDialog()
+        }
+    }
+
+    private fun showLogoutDialog() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setMessage("Sind Sie sicher, dass Sie sich abmelden möchten?")
+            .setCancelable(false)
+            .setPositiveButton("Ausloggen") { dialog, id ->
+                performLogout()
             }
+            .setNegativeButton("Stornieren") { dialog, id ->
+                dialog.dismiss()
+            }
+
+        val alert = dialogBuilder.create()
+        alert.setTitle("Ausloggen")
+        alert.show()
+        val positiveButton = alert.getButton(DialogInterface.BUTTON_POSITIVE)
+        positiveButton?.isAllCaps = false
+
+        val negativeButton = alert.getButton(DialogInterface.BUTTON_NEGATIVE)
+        negativeButton?.isAllCaps = false
+    }
+
+    private fun performLogout() {
+        lifecycleScope.launch(Dispatchers.Main) {
+            val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+            val myEdit = prefs.edit()
+            myEdit.putBoolean("isUserLoggedIn", false)
+            myEdit.apply()
+            val intent = Intent(this@LevelsAdminActivity, StudentOrAdminActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
