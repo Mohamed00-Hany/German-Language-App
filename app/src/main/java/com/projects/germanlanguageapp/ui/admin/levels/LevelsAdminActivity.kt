@@ -15,7 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.projects.germanlanguageapp.R
-import com.projects.germanlanguageapp.databinding.ActivityAdminLevelBinding
+import com.projects.germanlanguageapp.databinding.ActivityAdminLevelsBinding
 import com.projects.germanlanguageapp.ui.admin.lessons.LessonsAdminActivity
 import com.projects.germanlanguageapp.ui.levels.LevelsAdapter
 import com.projects.germanlanguageapp.ui.levels.LevelsViewModel
@@ -25,7 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LevelsAdminActivity : AppCompatActivity() {
     private val viewModel: LevelsViewModel by viewModels()
-    private lateinit var binding: ActivityAdminLevelBinding
+    private lateinit var binding: ActivityAdminLevelsBinding
     private lateinit var levelsAdapter: LevelsAdapter
     private lateinit var levelsRecycler: RecyclerView
 
