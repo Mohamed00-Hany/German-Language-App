@@ -32,7 +32,7 @@ class LevelsAdminActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_admin_level)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_admin_levels)
         binding.vm=viewModel
         viewModel.getLevels()
         levelsAdapter=LevelsAdapter(viewModel.levels.value)
