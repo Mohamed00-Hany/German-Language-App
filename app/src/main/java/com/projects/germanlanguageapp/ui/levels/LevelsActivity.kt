@@ -14,6 +14,8 @@ import com.projects.germanlanguageapp.databinding.ActivityLevelsBinding
 import com.projects.germanlanguageapp.ui.lessons.LessonsActivity
 import com.projects.germanlanguageapp.ui.studentoradmin.StudentOrAdminActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -49,13 +51,18 @@ class LevelsActivity: AppCompatActivity() {
             }
         }
         binding.icLogout.setOnClickListener {
-            val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
-            val myEdit = prefs.edit()
-            myEdit.putBoolean("isUserLoggedIn", false)
-            myEdit.apply()
-            val intent=Intent(this@LevelsActivity,StudentOrAdminActivity::class.java)
-            startActivity(intent)
-            finish()
+            lifecycleScope.launch(Dispatchers.Main) {
+                showLoading("Wird geladen...")
+                val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+                val myEdit = prefs.edit()
+                myEdit.putBoolean("isUserLoggedIn", false)
+                myEdit.apply()
+                delay(500)
+                hideLoading()
+                val intent=Intent(this@LevelsActivity,StudentOrAdminActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
     }
 

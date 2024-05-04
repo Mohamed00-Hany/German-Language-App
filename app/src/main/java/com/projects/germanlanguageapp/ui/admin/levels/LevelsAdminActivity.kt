@@ -23,6 +23,9 @@ import com.projects.germanlanguageapp.ui.levels.LevelsViewModel
 import com.projects.germanlanguageapp.ui.studentoradmin.StudentOrAdminActivity
 import kotlinx.coroutines.launch
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+
 @AndroidEntryPoint
 class LevelsAdminActivity : AppCompatActivity() {
     private val viewModel: LevelsViewModel by viewModels()
@@ -63,13 +66,18 @@ class LevelsAdminActivity : AppCompatActivity() {
             showAddLevelDialog()
         }
         binding.icLogout.setOnClickListener {
-            val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
-            val myEdit = prefs.edit()
-            myEdit.putBoolean("isUserLoggedIn", false)
-            myEdit.apply()
-            val intent=Intent(this@LevelsAdminActivity, StudentOrAdminActivity::class.java)
-            startActivity(intent)
-            finish()
+            lifecycleScope.launch(Dispatchers.Main) {
+                showLoading("Wird geladen...")
+                val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+                val myEdit = prefs.edit()
+                myEdit.putBoolean("isUserLoggedIn", false)
+                myEdit.apply()
+                delay(500)
+                hideLoading()
+                val intent=Intent(this@LevelsAdminActivity, StudentOrAdminActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
     }
 
