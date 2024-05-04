@@ -9,7 +9,7 @@
     tools:context=".ui.admin.WordsActivity">
 
     <ImageView
-        android:id="@+id/green_cicle2"
+        android:id="@+id/corner_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/corner_image"
@@ -36,10 +36,10 @@
         android:maxLines="1"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_2"
+        app:layout_constraintTop_toBottomOf="@id/corner_image"
         app:layout_constraintRight_toLeftOf="@id/adjectives_button"
         app:layout_constraintBottom_toTopOf="@id/Verbs_button"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="40dp"
         android:text="@string/Nouns"
         android:textAllCaps="false"
         android:background="@drawable/rounded_button_background"
@@ -56,10 +56,10 @@
         android:textAllCaps="false"
         android:textSize="20sp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_2"
+        app:layout_constraintTop_toBottomOf="@id/corner_image"
         app:layout_constraintLeft_toRightOf="@id/Nouns_button"
         app:layout_constraintBottom_toTopOf="@id/Other_button"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="40dp"
         android:text="@string/adjectives"
         android:background="@drawable/rounded_button_background"
         android:backgroundTint="@color/greeen2"
@@ -82,6 +82,7 @@
         android:backgroundTint="@color/greeen2"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
+        android:layout_marginBottom="40dp"
         android:textColor="@color/white" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -99,6 +100,7 @@
         android:background="@drawable/rounded_button_background"
         android:backgroundTint="@color/greeen"
         android:layout_marginRight="12dp"
+        android:layout_marginBottom="40dp"
         android:textColor="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

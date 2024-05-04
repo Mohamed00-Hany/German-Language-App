@@ -8,7 +8,7 @@
     android:paddingBottom="100dp"
     tools:context=".ui.admin.QuestionsActivity">
     <ImageView
-        android:id="@+id/green_cicle"
+        android:id="@+id/corner_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/corner_image"
@@ -28,7 +28,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginRight="5dp"
-        app:layout_constraintRight_toLeftOf="@id/green_cicle"/>
+        app:layout_constraintRight_toLeftOf="@id/corner_image"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/choose_button"
@@ -37,14 +37,14 @@
         android:maxLines="1"
         android:background="@drawable/rounded_button_background"
         android:backgroundTint="@color/greeen"
+        android:layout_marginTop="40dp"
         android:text="@string/Choose"
         android:textAllCaps="false"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/W1"
+        app:layout_constraintTop_toBottomOf="@id/corner_image"
         app:layout_constraintRight_toLeftOf="@id/rearrange_button"
         app:layout_constraintBottom_toTopOf="@id/match_button"
-        android:layout_marginTop="50dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:textColor="@color/white"
@@ -59,11 +59,11 @@
         android:text="@string/Rearrange"
         android:textAllCaps="false"
         android:textSize="20sp"
+        android:layout_marginTop="40dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/W1"
+        app:layout_constraintTop_toBottomOf="@id/corner_image"
         app:layout_constraintLeft_toRightOf="@id/choose_button"
         app:layout_constraintBottom_toTopOf="@id/complete_button"
-        android:layout_marginTop="50dp"
         android:layout_marginRight="12dp"
         android:textColor="@color/white"
         />
@@ -85,6 +85,7 @@
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:textColor="@color/white"
+        android:layout_marginBottom="40dp"
         />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -103,6 +104,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginRight="12dp"
         android:textColor="@color/white"
+        android:layout_marginBottom="40dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
