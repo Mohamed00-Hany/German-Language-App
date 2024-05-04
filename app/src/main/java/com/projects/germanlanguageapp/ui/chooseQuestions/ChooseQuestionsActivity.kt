@@ -16,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class ChooseQuestionsActivity : AppCompatActivity() {
@@ -37,11 +38,11 @@ class ChooseQuestionsActivity : AppCompatActivity() {
         lessonId = intent.getIntExtra("lessonId", 0)
         lifecycleScope.launch(Dispatchers.IO) {
             viewModel.getChooseQuestions(levelId,lessonId)
-        }
-        lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.questions.collectLatest {
-                if (it?.isNotEmpty() == true) {
-                    displayQuestion()
+            withContext(Dispatchers.Main) {
+                viewModel.questions.collectLatest {
+                    if (it?.isNotEmpty() == true) {
+                        displayQuestion()
+                    }
                 }
             }
         }

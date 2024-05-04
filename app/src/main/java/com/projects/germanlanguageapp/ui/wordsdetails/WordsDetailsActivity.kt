@@ -15,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class WordsDetailsActivity: AppCompatActivity() {
@@ -40,10 +41,10 @@ class WordsDetailsActivity: AppCompatActivity() {
         viewModel.onMicrophoneClicked(applicationContext)
         lifecycleScope.launch(Dispatchers.IO) {
             wordsType?.let { viewModel.loadRequiredData(levelId!!, lessonId!!, it) }
-        }
-        lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.wordsList.collectLatest {
-                wordsAdapter.changeData(it)
+            withContext(Dispatchers.Main) {
+                viewModel.wordsList.collectLatest {
+                    wordsAdapter.changeData(it)
+                }
             }
         }
         wordsAdapter.onFeatureClickListener=object : WordsAdapter.OnFeatureClick {

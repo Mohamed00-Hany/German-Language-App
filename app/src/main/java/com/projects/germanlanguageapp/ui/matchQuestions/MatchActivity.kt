@@ -16,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class MatchActivity : AppCompatActivity() {
@@ -34,16 +35,15 @@ class MatchActivity : AppCompatActivity() {
         lessonId = intent.getIntExtra("lessonId", 0)
         lifecycleScope.launch(Dispatchers.IO) {
             matchViewModel.getMatchQuestions(levelId,lessonId)
-        }
-        lifecycleScope.launch(Dispatchers.Main) {
-            matchViewModel.matchQuestions.collectLatest {
-                if (it?.isNotEmpty() == true) {
-                    matchViewModel.getQuestionsAndAnswers()
-                    displayQuestion()
+            withContext(Dispatchers.Main) {
+                matchViewModel.matchQuestions.collectLatest {
+                    if (it?.isNotEmpty() == true) {
+                        matchViewModel.getQuestionsAndAnswers()
+                        displayQuestion()
+                    }
                 }
             }
         }
-
         binding.SubmitButton.setOnClickListener { checkAnswer() }
         binding.nextButton.setOnClickListener { nextQuestion() }
     }
