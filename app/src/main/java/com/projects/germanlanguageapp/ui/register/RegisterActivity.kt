@@ -47,14 +47,14 @@ class RegisterActivity : AppCompatActivity() {
                         hideLoading()
                         showMessage(
                             it.message,
-                            posActionTitle = "Log in",
+                            posActionTitle = "Anmeld",
                             posAction = { navigateToLoginScreen() },
-                            negActionTitle = "Ok"
+                            negActionTitle = "Ja"
                         )
                     }
                     is GlobalState.Failed -> {
                         hideLoading()
-                        showMessage(it.message, negActionTitle = "Ok")
+                        showMessage(it.message, negActionTitle = "Ja")
                     }
                 }
             }

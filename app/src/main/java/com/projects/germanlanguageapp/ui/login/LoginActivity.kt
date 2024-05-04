@@ -57,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                     is GlobalState.Failed -> {
                         hideLoading()
-                        showMessage(it.message, negActionTitle = "Ok")
+                        showMessage(it.message, negActionTitle = "Ja")
                     }
                 }
             }

@@ -21,20 +21,19 @@ class LoginViewModel : ViewModel() {
     fun login() {
         if (!validForm())
         {
-            Log.e("hany",emailError.value?:"")
             return
         }
 
-        loginState.value = GlobalState.Loading("Loading...")
+        loginState.value = GlobalState.Loading("Wird geladen...")
         auth.signInWithEmailAndPassword(email.value!!, password.value!!)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     viewModelScope.launch {
-                        loginState.value = GlobalState.Success("Successful Login")
+                        loginState.value = GlobalState.Success("Erfolgreiche Registrierung")
                     }
                 } else {
                     GlobalState.Loading(null)
-                    loginState.value = GlobalState.Failed(task.exception?.localizedMessage ?: "")
+                    loginState.value = GlobalState.Failed("Fehler")
                 }
             }
     }

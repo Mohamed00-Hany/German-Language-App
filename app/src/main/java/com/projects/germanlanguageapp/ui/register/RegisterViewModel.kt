@@ -24,16 +24,16 @@ class RegisterViewModel : ViewModel() {
     fun register() {
         if (!validForm())
             return
-        globalStateState.value = GlobalState.Loading("Loading...")
+        globalStateState.value = GlobalState.Loading("Wird geladen...")
         auth.createUserWithEmailAndPassword(email.value!!, password.value!!)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     viewModelScope.launch {
-                        globalStateState.value = GlobalState.Success("Successful Register")
+                        globalStateState.value = GlobalState.Success("Erfolgreiche Registrierung")
                     }
                 } else {
                     GlobalState.Loading(null)
-                    globalStateState.value = GlobalState.Failed(task.exception?.localizedMessage ?: "")
+                    globalStateState.value = GlobalState.Failed("Fehler")
                 }
             }
     }
