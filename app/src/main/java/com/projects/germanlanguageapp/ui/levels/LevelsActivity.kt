@@ -62,7 +62,7 @@ class LevelsActivity: AppCompatActivity() {
         dialogBuilder.setMessage("Sind Sie sicher, dass Sie sich abmelden möchten?")
             .setCancelable(false)
             .setPositiveButton("Ausloggen") { dialog, id ->
-                performLogout()
+                logout()
             }
             .setNegativeButton("Stornieren") { dialog, id ->
                 dialog.dismiss()
@@ -78,7 +78,7 @@ class LevelsActivity: AppCompatActivity() {
         negativeButton?.isAllCaps = false
     }
 
-    private fun performLogout() {
+    private fun logout() {
         val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
         val myEdit = prefs.edit()
         myEdit.putBoolean("isUserLoggedIn", false)
