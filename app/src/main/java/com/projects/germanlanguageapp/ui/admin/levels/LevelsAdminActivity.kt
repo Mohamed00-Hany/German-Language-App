@@ -1,4 +1,5 @@
 package com.projects.germanlanguageapp.ui.admin.levels
+import android.app.ProgressDialog
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +29,7 @@ class LevelsAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAdminLevelsBinding
     private lateinit var levelsAdapter: LevelsAdapter
     private lateinit var levelsRecycler: RecyclerView
-
+    var progressDialog: ProgressDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +37,13 @@ class LevelsAdminActivity : AppCompatActivity() {
         binding.vm=viewModel
         viewModel.getLevels()
         levelsAdapter=LevelsAdapter(viewModel.levels.value)
+        showLoading("Wird geladen...")
         lifecycleScope.launch {
             viewModel.levels.collect {
-                levelsAdapter.changeData(it)
+                if (it?.isEmpty()==false) {
+                    hideLoading()
+                    levelsAdapter.changeData(it)
+                }
             }
         }
         levelsRecycler=binding.levelsAdminRecycler
@@ -105,6 +110,15 @@ class LevelsAdminActivity : AppCompatActivity() {
 
     }
 
+    private fun showLoading(message: String?) {
+        progressDialog = ProgressDialog(this)
+        progressDialog?.setMessage(message)
+        progressDialog?.setCancelable(false)
+        progressDialog?.show()
+    }
 
-
+    private fun hideLoading() {
+        progressDialog?.dismiss()
+        progressDialog = null
+    }
 }
