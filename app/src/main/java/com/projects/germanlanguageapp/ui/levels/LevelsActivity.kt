@@ -79,15 +79,13 @@ class LevelsActivity: AppCompatActivity() {
     }
 
     private fun performLogout() {
-        lifecycleScope.launch(Dispatchers.Main) {
-            val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
-            val myEdit = prefs.edit()
-            myEdit.putBoolean("isUserLoggedIn", false)
-            myEdit.apply()
-            val intent = Intent(this@LevelsActivity, StudentOrAdminActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+        val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+        val myEdit = prefs.edit()
+        myEdit.putBoolean("isUserLoggedIn", false)
+        myEdit.apply()
+        val intent = Intent(this@LevelsActivity, StudentOrAdminActivity::class.java)
+        startActivity(intent)
+        finish()
     }
     private fun showLoading(message: String?) {
         progressDialog = ProgressDialog(this)

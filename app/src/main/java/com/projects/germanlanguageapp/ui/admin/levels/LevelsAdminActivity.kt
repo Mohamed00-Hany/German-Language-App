@@ -93,15 +93,13 @@ class LevelsAdminActivity : AppCompatActivity() {
     }
 
     private fun performLogout() {
-        lifecycleScope.launch(Dispatchers.Main) {
-            val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
-            val myEdit = prefs.edit()
-            myEdit.putBoolean("isUserLoggedIn", false)
-            myEdit.apply()
-            val intent = Intent(this@LevelsAdminActivity, StudentOrAdminActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+        val prefs: SharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+        val myEdit = prefs.edit()
+        myEdit.putBoolean("isUserLoggedIn", false)
+        myEdit.apply()
+        val intent = Intent(this@LevelsAdminActivity, StudentOrAdminActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun showAddLevelDialog() {
