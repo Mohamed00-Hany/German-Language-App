@@ -59,7 +59,7 @@ class LevelsActivity: AppCompatActivity() {
 
     private fun showLogoutDialog() {
         val dialogBuilder = AlertDialog.Builder(this)
-        dialogBuilder.setMessage("Sind Sie sicher, dass Sie sich abmelden möchten?")
+        dialogBuilder.setMessage("Möchten Sie sich wirklich abmelden?")
             .setCancelable(false)
             .setPositiveButton("Ausloggen") { dialog, id ->
                 logout()
